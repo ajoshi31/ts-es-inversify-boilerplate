@@ -9,7 +9,7 @@
     "prettier"
   ],
   "rules": {
-    "no-loops/no-loops": 2, // 2 means throw an ERROR
+    "no-loops/no-loops": 0, // 2 means throw an ERROR
     "no-console": 1,
     "prettier/prettier": 2
   }
