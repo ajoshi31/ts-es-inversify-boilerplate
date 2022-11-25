@@ -13,6 +13,11 @@
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "prettier-watch": "onchange 'src/**/*.ts' -- prettier --write {{changed}}"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettier-format && npm run lint"
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -24,6 +29,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-no-loops": "^0.3.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.2",
     "nodemon": "^2.0.20",
     "onchange": "^7.1.0",
     "prettier": "^2.8.0",
