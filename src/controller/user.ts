@@ -19,10 +19,10 @@ export class UserController {
     return this.userService.getUsers();
   }
 
-  @httpGet('/:id')
-  public getUser(request: Request): IUser {
-    return this.userService.getUser(request.params.id);
-  }
+  // @httpGet('/:id')
+  // public getUser(request: Request): IUser {
+  //   return this.userService.getUser(request.params.id);
+  // }
 
   @httpPost('/')
   public newUser(request: Request): IUser {

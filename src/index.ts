@@ -3,7 +3,6 @@ import { InversifyExpressServer } from 'inversify-express-utils';
 import { Container } from 'inversify';
 import TYPES from './constant/types';
 import { UserService } from './service/user';
-import './controller/home';
 import './controller/user';
 import * as express from 'express';
 
