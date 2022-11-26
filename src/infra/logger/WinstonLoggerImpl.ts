@@ -1,4 +1,3 @@
-
 import { Logger } from 'winston';
 import ILogger from './ILogger';
 import { WinstonLogger } from './winston';
@@ -44,4 +43,6 @@ class WinstonLoggerImpl implements ILogger {
 }
 
 // Exporting as singelton
-export const winstonLoggerInstance = new WinstonLoggerImpl(new WinstonLogger().getWinstonLogger());
+export const winstonLoggerInstance = new WinstonLoggerImpl(
+  new WinstonLogger().getWinstonLogger()
+);
