@@ -42,6 +42,8 @@
     "dotenv": "^16.0.3",
     "inversify": "^6.0.1",
     "inversify-express-utils": "^6.4.3",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "winston": "^3.8.2",
+    "winston-daily-rotate-file": "^4.7.1"
   }
 }

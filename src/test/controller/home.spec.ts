@@ -1,7 +1,7 @@
 import 'mocha';
 
 import { expect } from 'chai';
-import { HomeController } from '../../controller/home';
+import { HomeController } from '../../module/controller/home';
 
 describe('HomeController', () => {
   it('should give back `Home sweet home`', () => {

@@ -1,6 +1,6 @@
 import { Container } from 'inversify';
 import TYPES from '../constant/types';
-import { UserService } from '../service/user';
+import { UserService } from '../module/service/user';
 
 /**
  *

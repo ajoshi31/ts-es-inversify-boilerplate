@@ -8,7 +8,7 @@ import {
 import { inject } from 'inversify';
 import { IUser, UserService } from '../service/user';
 import { Request } from 'express';
-import TYPES from '../constant/types';
+import TYPES from '../../constant/types';
 
 @controller('/user')
 export class UserController {

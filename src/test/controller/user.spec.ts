@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { UserController } from '../../controller/user';
+import { UserController } from '../../module/controller/user';
 import { UserService } from '../../service/user';
 
 describe('UserController', () => {
