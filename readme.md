@@ -10,7 +10,7 @@ STEPS TO DO
 - [ ] Make jest testing module setup
 - [ ] Make Auth Module separate
 - [ ] Make Search Module
-- [ ] Status Monitor: express-status-monitor
+- [x] Status Monitor: express-status-monitor
 - [ ] Class Validator
 - [ ] E2E API Testing SuperTest
 - [ ] Class Transformer
