@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import * as dotenv from 'dotenv';
+import morgan from 'morgan';
 
 import './module/controller/user';
 import * as express from 'express';
@@ -15,6 +16,11 @@ const expressApp = (async (): Promise<void> => {
   });
 
   const port = process.env.PORT;
+  const winstonStream = {
+    write: (message: string) => {
+      logger.info(message);
+    }
+  };
   server.setConfig((app) => {
     app.use(
       express.urlencoded({
@@ -22,6 +28,7 @@ const expressApp = (async (): Promise<void> => {
       })
     );
     app.use(express.json());
+    app.use(morgan('combined', { stream: winstonStream }));
   });
   const serverInstance = await server.build();
   serverInstance.listen(port, () => {

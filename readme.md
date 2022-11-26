@@ -1,6 +1,6 @@
 STEPS TO DO
 
-- [ ] Make morgan request logger
+- [x] Make morgan request logger
 - [ ] Make separate infra layer for http
 - [ ] Make separate infra layer for persistence
 - [x] Make separate logger

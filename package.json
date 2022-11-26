@@ -22,6 +22,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/morgan": "^1.9.3",
     "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "@typescript-eslint/parser": "^5.44.0",
@@ -42,6 +43,7 @@
     "dotenv": "^16.0.3",
     "inversify": "^6.0.1",
     "inversify-express-utils": "^6.4.3",
+    "morgan": "^1.10.0",
     "reflect-metadata": "^0.1.13",
     "winston": "^3.8.2",
     "winston-daily-rotate-file": "^4.7.1"
