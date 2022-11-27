@@ -15,4 +15,4 @@ STEPS TO DO
 - [ ] E2E API Testing SuperTest
 - [ ] Class Transformer
 - [x] Middleware
-- [ ] Module Alias
+- [ ] **Module Alias** : At last when things are more stable in term of folder refactoring
