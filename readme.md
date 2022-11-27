@@ -11,9 +11,9 @@ STEPS TO DO
 - [ ] Make Auth Module separate
 - [ ] Make Search Module
 - [x] Status Monitor: express-status-monitor
-- [ ] Class Validator
+- [x] Class Validator
 - [ ] E2E API Testing SuperTest
-- [ ] Class Transformer
+- [x] Class Transformer
 - [x] Middleware
 - [ ] **Module Alias** : At last when things are more stable in term of folder refactoring
 - [ ] **Error Handler** 
