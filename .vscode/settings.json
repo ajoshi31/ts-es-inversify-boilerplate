@@ -4,7 +4,12 @@
       "mysqlOptions": {
         "authProtocol": "default"
       },
-      "previewLimit": 50
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 3306,
+      "driver": "MySQL",
+      "name": "my_service_local",
+      "group": "localhost"
     }
   ],
   "cSpell.words": ["initialise", "inversify"]

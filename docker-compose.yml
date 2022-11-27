@@ -1,0 +1,22 @@
+# YML version
+version: '3.8'
+
+# Define all the services our book application needs
+services:
+  my-service:
+    # node application
+    container_name: my-service-container
+    restart: always # automatically restart if the app fails
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ajoshi/my-service
+    env_file:
+      - .env
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/usr/src/app
+      - exclude:/usr/src/app/node_modules/
+volumes:
+  exclude:

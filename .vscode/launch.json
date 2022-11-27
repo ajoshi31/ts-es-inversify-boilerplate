@@ -13,6 +13,18 @@
       "localRoot": "${workspaceFolder}",
       "remoteRoot": "${workspaceFolder}",
       "sourceMaps": true
+    },
+    {
+      "name": "My-AppService-docker",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "restart": true,
+      "sourceMaps": true,
+      "address": "localhost",
+      "localRoot": "${workspaceFolder}",
+      "remoteRoot": "/usr/src/app",
+      "protocol": "inspector"
     }
   ]
 }
