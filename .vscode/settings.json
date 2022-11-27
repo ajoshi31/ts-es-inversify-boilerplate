@@ -1,3 +1,11 @@
 {
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default"
+      },
+      "previewLimit": 50
+    }
+  ],
   "cSpell.words": ["initialise", "inversify"]
 }

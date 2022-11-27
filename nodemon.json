@@ -1,6 +1,9 @@
 {
   "watch": ["src"],
   "ext": ".ts,.js",
-  "ignore": [],
-  "exec": "ts-node ./src/index.ts"
+  "ignore": [".git", "node_modules/**/node_modules"],
+  "execMap": {
+    "ts": "node --require ts-node/register -r tsconfig-paths/register"
+  },
+  "exec": "npx tsc&&node --inspect=0.0.0.0:9229 --nolazy build/index.js"
 }
