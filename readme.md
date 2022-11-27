@@ -4,7 +4,7 @@ STEPS TO DO
 - [ ] Make separate infra layer for http
 - [ ] Make separate infra layer for persistence
 - [x] Make separate logger
-- [ ] Docker setup
+- [x] Docker setup
 - [ ] Swagger API Documentation
 - [x] Make debugger and docker debugger in vscode
 - [ ] Make jest testing module setup
