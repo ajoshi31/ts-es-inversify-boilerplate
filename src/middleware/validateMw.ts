@@ -8,7 +8,6 @@ const validationMw = (dtoClass: any) => {
     validate(output, { skipMissingProperties: true }).then((errors) => {
       // errors is an array of validation errors
       if (errors.length > 0) {
-        console.log(errors);
         let errorTexts: any = [];
         for (const errorItem of errors) {
           errorTexts = errorTexts.concat(errorItem.constraints);
@@ -16,7 +15,6 @@ const validationMw = (dtoClass: any) => {
         res.status(400).send(errorTexts);
         return;
       } else {
-        res.locals.input = output;
         next();
       }
     });

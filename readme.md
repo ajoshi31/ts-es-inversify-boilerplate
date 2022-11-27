@@ -16,5 +16,5 @@ STEPS TO DO
 - [x] Class Transformer
 - [x] Middleware
 - [ ] **Module Alias** : At last when things are more stable in term of folder refactoring
-- [ ] **Error Handler** 
-- [ ] **Result Class** with error and response together
+- [x] **Error Handler** 
+- [x] **Result Class** with error and response together

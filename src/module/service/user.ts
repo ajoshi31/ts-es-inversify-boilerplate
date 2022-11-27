@@ -1,5 +1,8 @@
 import { injectable } from 'inversify';
+import { AppError } from '../../core/error/AppError';
+import { left, Result, right } from '../../core/result/result';
 import { UserDTO } from '../controller/UserDto';
+import { UserResponseDTO } from '../controller/UserResponseDTO';
 
 export interface IUser {
   email: string;
@@ -11,7 +14,7 @@ export class UserService {
   private userStorage: IUser[] = [
     {
       email: 'lorem@ipsum.com',
-      name: 'Lorem'
+      name: 'Lorem Ipsum'
     },
     {
       email: 'doloe@sit.com',
@@ -19,20 +22,24 @@ export class UserService {
     }
   ];
 
-  public getUsers(): IUser[] {
-    return this.userStorage;
+  public getUsers(): UserResponseDTO {
+    try {
+      return right(Result.ok<any>(this.userStorage));
+    } catch (err: any) {
+      return left(new AppError.UnexpectedError(err));
+    }
   }
 
   public getUser(id: string): IUser | undefined {
     return this.userStorage.find((user) => user.name === id);
   }
 
-  public newUser(user: UserDTO): IUser {
+  public newUser(user: UserDTO) {
     this.userStorage.push(user);
-    return user;
+    return this.userStorage;
   }
 
-  public updateUser(id: string, user: IUser): IUser {
+  public updateUser(id: string, user: IUser) {
     this.userStorage.forEach((entry, index) => {
       if (entry.name === id) {
         this.userStorage[index] = user;
