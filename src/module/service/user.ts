@@ -1,4 +1,5 @@
 import { injectable } from 'inversify';
+import { UserDTO } from '../controller/UserDto';
 
 export interface IUser {
   email: string;
@@ -26,7 +27,7 @@ export class UserService {
     return this.userStorage.find((user) => user.name === id);
   }
 
-  public newUser(user: IUser): IUser {
+  public newUser(user: UserDTO): IUser {
     this.userStorage.push(user);
     return user;
   }
