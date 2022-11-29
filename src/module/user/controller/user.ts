@@ -9,7 +9,6 @@ import {
 import { inject, interfaces } from 'inversify';
 import { Request, Response } from 'express';
 
-
 import { UserDTO } from './UserDto';
 
 import { IUser, UserService } from '@user-module/service/user';
