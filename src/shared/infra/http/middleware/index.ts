@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import auth from 'http-auth';
 import monitorOptions from './status-config';
 import morgan from 'morgan';
-import { logger } from '../core/logger/logger';
+import { logger } from '../../../core/logger/logger';
 
 export default class Middleware {
   basic = auth.basic(

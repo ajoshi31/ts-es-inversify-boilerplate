@@ -2,9 +2,9 @@ import 'module-alias/register';
 import 'reflect-metadata';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import * as dotenv from 'dotenv';
-import { InversifyConfigContainer } from './di-config';
-import { logger } from './core/logger/logger';
-import Middleware from './middleware';
+import { InversifyConfigContainer } from './ioc/ioc-config';
+import { logger } from './shared/core/logger/logger';
+import Middleware from './shared/infra/http/middleware';
 
 const expressApp = (async (): Promise<void> => {
   dotenv.config();

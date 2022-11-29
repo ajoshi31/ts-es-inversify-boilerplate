@@ -1,5 +1,5 @@
 import { Logger } from 'winston';
-import ILogger from './ILogger';
+import ILogger from '../../core/logger/ILogger';
 import { WinstonLogger } from './winston';
 
 class WinstonLoggerImpl implements ILogger {

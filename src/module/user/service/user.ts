@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
-import { AppError } from '../../../core/error/AppError';
-import { left, Result, right } from '../../../core/result/result';
+import { AppError } from '../../../shared/core/error/AppError';
+import { left, Result, right } from '../../../shared/core/result/result';
 import { UserDTO } from '../controller/UserDto';
 import { UserResponseDTO } from '../controller/UserResponseDTO';
 

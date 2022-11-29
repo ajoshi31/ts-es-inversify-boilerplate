@@ -8,12 +8,12 @@ import {
 
 import { inject, interfaces } from 'inversify';
 import { Request, Response } from 'express';
-import TYPES from '../../../constant/types';
+import TYPES from '../../../ioc/constant/types';
 
 import { UserDTO } from './UserDto';
 
-import validationMw from '../../../middleware/validateMw';
-import { BaseController } from '../../../core/controller/BaseController';
+import validationMw from '../../../shared/infra/http/middleware/validateMw';
+import { BaseController } from '../../../shared/infra/http/controller/BaseController';
 import { IUser, UserService } from '@user-module/service/user';
 
 @controller('/user')

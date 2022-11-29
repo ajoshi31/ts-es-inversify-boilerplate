@@ -1,4 +1,4 @@
-import ILogger from '../../infra/logger/ILogger';
+import ILogger from './ILogger';
 import { winstonLoggerInstance } from '../../infra/logger/WinstonLoggerImpl';
 
 class AppLogger {

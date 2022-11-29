@@ -1,8 +1,8 @@
 STEPS TO DO
 
 - [x] Make morgan request logger
-- [ ] Make separate infra layer for http
-- [ ] Make separate infra layer for persistence
+- [x] Make separate infra layer for http
+- [x] Make separate infra layer for persistence
 - [x] Make separate logger
 - [x] Docker setup
 - [ ] Swagger API Documentation
@@ -15,6 +15,6 @@ STEPS TO DO
 - [ ] E2E API Testing SuperTest
 - [x] Class Transformer
 - [x] Middleware
-- [ ] **Module Alias** : At last when things are more stable in term of folder refactoring
+- [x] **Module Alias** : At last when things are more stable in term of folder refactoring
 - [x] **Error Handler** 
 - [x] **Result Class** with error and response together
