@@ -1,5 +1,5 @@
+import { winstonLoggerInstance } from '@shared-infra/logger/WinstonLoggerImpl';
 import ILogger from './ILogger';
-import { winstonLoggerInstance } from '../../infra/logger/WinstonLoggerImpl';
 
 class AppLogger {
   logger: ILogger;

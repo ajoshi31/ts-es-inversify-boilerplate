@@ -1,5 +1,5 @@
-import { logger } from '../logger/logger';
-import { Result } from '../result/result';
+import { logger } from '@core/logger/logger';
+import { Result } from '@core/result/result';
 import { UseCaseError } from './UseCaseError';
 
 export namespace AppError {

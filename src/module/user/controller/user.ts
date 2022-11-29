@@ -8,13 +8,14 @@ import {
 
 import { inject, interfaces } from 'inversify';
 import { Request, Response } from 'express';
-import TYPES from '../../../ioc/constant/types';
+
 
 import { UserDTO } from './UserDto';
 
-import validationMw from '../../../shared/infra/http/middleware/validateMw';
-import { BaseController } from '../../../shared/infra/http/controller/BaseController';
 import { IUser, UserService } from '@user-module/service/user';
+import TYPES from '@ioc/constant/types';
+import { BaseController } from '@shared-infra/http/controller/BaseController';
+import validationMw from '@shared-infra/http/middleware/validateMw';
 
 @controller('/user')
 export abstract class UserController extends BaseController {

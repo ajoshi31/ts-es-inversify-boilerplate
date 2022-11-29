@@ -23,7 +23,10 @@
     "moduleResolution": "node",
     "baseUrl": "./src",
     "paths": {
-      "@user-module/*": ["module/user/*"]
+      "@user-module/*": ["module/user/*"],
+      "@core/*": ["shared/core/*"],
+      "@shared-infra/*": ["shared/infra/*"],
+      "@ioc/*": ["ioc/*"]
     }
   },
   "include": ["src/**/*"],

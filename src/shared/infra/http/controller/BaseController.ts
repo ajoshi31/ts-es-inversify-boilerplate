@@ -2,7 +2,8 @@ import * as express from 'express';
 import { injectable } from 'inversify';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 import { interfaces } from 'inversify-express-utils';
-import { logger } from '../../../core/logger/logger';
+import { logger } from '@core/logger/logger';
+
 
 @injectable()
 export abstract class BaseController {

@@ -2,6 +2,7 @@ import { Container } from 'inversify';
 import TYPES from './constant/types';
 import '../module/user/controller/user';
 import { UserService } from '@user-module/service/user';
+import { logger } from '@core/logger/logger';
 
 /**
  *
@@ -13,7 +14,7 @@ const InversifyConfigContainer = async () => {
   try {
     await container.bind<UserService>(TYPES.UserService).to(UserService);
   } catch (err: any) {
-    // logger.error(err);
+    logger.error(err);
   }
 
   return container;
