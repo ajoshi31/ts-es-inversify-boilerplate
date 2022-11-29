@@ -1,7 +1,7 @@
 import { Container } from 'inversify';
 import TYPES from '../constant/types';
-import { UserService } from '../module/service/user';
-import './../module/controller/user';
+import '../module/user/controller/user';
+import { UserService } from '@user-module/service/user';
 
 /**
  *

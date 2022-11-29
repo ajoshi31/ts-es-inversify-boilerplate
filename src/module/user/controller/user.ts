@@ -7,14 +7,14 @@ import {
 } from 'inversify-express-utils';
 
 import { inject, interfaces } from 'inversify';
-import { IUser, UserService } from '../service/user';
 import { Request, Response } from 'express';
-import TYPES from '../../constant/types';
+import TYPES from '../../../constant/types';
 
 import { UserDTO } from './UserDto';
 
-import validationMw from '../../middleware/validateMw';
-import { BaseController } from '../../core/controller/BaseController';
+import validationMw from '../../../middleware/validateMw';
+import { BaseController } from '../../../core/controller/BaseController';
+import { IUser, UserService } from '@user-module/service/user';
 
 @controller('/user')
 export abstract class UserController extends BaseController {

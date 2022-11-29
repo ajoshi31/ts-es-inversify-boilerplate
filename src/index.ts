@@ -1,3 +1,4 @@
+import 'module-alias/register';
 import 'reflect-metadata';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import * as dotenv from 'dotenv';

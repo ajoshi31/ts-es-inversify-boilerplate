@@ -21,7 +21,10 @@
     "noUnusedLocals": false,
     "emitDecoratorMetadata": true,
     "moduleResolution": "node",
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "paths": {
+      "@user-module/*": ["module/user/*"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["src/**/*.spec.ts"]

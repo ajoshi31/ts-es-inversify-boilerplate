@@ -50,9 +50,14 @@
     "http-auth": "^4.2.0",
     "inversify": "^6.0.1",
     "inversify-express-utils": "^6.4.3",
+    "module-alias": "^2.2.2",
     "morgan": "^1.10.0",
     "reflect-metadata": "^0.1.13",
     "winston": "^3.8.2",
     "winston-daily-rotate-file": "^4.7.1"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@user-module": "build/module/user"
   }
 }
