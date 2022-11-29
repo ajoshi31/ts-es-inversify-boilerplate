@@ -22,7 +22,7 @@
     "emitDecoratorMetadata": true,
     "moduleResolution": "node",
     "baseUrl": "./src"
-  }
-  // "include": ["src/**/*"],
-  // "exclude": ["src/**/*.spec.ts"]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["src/**/*.spec.ts"]
 }
