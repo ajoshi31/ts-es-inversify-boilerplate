@@ -11,10 +11,11 @@ import { Request, Response } from 'express';
 
 import { UserDTO } from './UserDto';
 
-import { IUser, UserService } from '@user-module/service/user';
+import {  UserService } from '@user-module/service/user';
 import TYPES from '@ioc/constant/types';
 import { BaseController } from '@shared-infra/http/controller/BaseController';
 import validationMw from '@shared-infra/http/middleware/validateMw';
+import { IUser } from '@user-module/model/IUser';
 
 @controller('/user')
 export abstract class UserController extends BaseController {
