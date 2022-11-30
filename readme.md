@@ -16,5 +16,8 @@ STEPS TO DO
 - [x] Class Transformer
 - [x] Middleware
 - [x] **Module Alias** : At last when things are more stable in term of folder refactoring
-- [x] **Error Handler** 
+- [x] **Error Handler**
 - [x] **Result Class** with error and response together
+- [ ] Nodejs Event Dispatcher and Subscribers
+- [ ] Repositories and Service Class
+- [ ] Posts and Interfaces
