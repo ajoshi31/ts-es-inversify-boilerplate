@@ -1,5 +1,6 @@
 import { AppError } from '@core/error/AppError';
 import { left, Result, right } from '@core/result/result';
+import { UserDTO } from '@user-module/controller/UserDto';
 import { UserResponseDTO } from '@user-module/controller/UserResponseDTO';
 import { injectable } from 'inversify';
 
