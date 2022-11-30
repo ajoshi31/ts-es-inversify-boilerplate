@@ -11,7 +11,7 @@ import { Request, Response } from 'express';
 
 import { UserDTO } from './UserDto';
 
-import {  UserService } from '@user-module/service/user';
+import { UserService } from '@user-module/service/user';
 import TYPES from '@ioc/constant/types';
 import { BaseController } from '@shared-infra/http/controller/BaseController';
 import validationMw from '@shared-infra/http/middleware/validateMw';
