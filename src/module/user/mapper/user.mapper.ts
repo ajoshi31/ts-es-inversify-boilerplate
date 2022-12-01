@@ -8,4 +8,11 @@ export class UserMap {
       name: user.name
     };
   }
+
+  public static dtoToPersistence(user: UserDTO): any {
+    return {
+      emailId: user.email,
+      user_name: user.name
+    };
+  }
 }

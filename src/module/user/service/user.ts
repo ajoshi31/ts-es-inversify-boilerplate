@@ -5,14 +5,14 @@ import { UserDTO } from '@user-module/controller/UserDto';
 import { UserResponseDTO } from '@user-module/controller/UserResponseDTO';
 import { UserMap } from '@user-module/mapper/user.mapper';
 import { IUser } from '@user-module/model/IUser';
-import { UserRepository } from '@user-module/repositoryImplementation/user.repository';
+import { IUserRepository } from '@user-module/repository/user.repository.interaface';
 import { inject, injectable } from 'inversify';
 
 @injectable()
 export class UserService {
   constructor(
     @inject(TYPES.IUserRepository)
-    private readonly _userRepository: UserRepository
+    private readonly _userRepository: IUserRepository
   ) {}
 
   public getUsers(): UserResponseDTO {

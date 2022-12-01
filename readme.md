@@ -19,5 +19,5 @@ STEPS TO DO
 - [x] **Error Handler**
 - [x] **Result Class** with error and response together
 - [ ] Nodejs Event Dispatcher and Subscribers
-- [ ] Repositories and Service Class
-- [ ] Posts and Interfaces
+- [x] Repositories and Service Class
+- [x] Ports and Interfaces
