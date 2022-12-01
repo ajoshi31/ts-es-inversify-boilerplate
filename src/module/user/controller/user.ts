@@ -70,7 +70,6 @@ export abstract class UserController extends BaseController {
   })
   @httpPost('/', validationMw(UserDTO))
   public async newUser(request: Request, response: Response): Promise<any> {
-    console.log(request, response);
     return await this.userService.newUser(request.body);
   }
 
