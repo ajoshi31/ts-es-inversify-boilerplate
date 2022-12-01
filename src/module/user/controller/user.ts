@@ -6,7 +6,7 @@ import {
   httpDelete
 } from 'inversify-express-utils';
 
-import { inject, interfaces } from 'inversify';
+import { inject } from 'inversify';
 import { Request, Response } from 'express';
 
 import { UserDTO } from './UserDto';

@@ -5,7 +5,7 @@ STEPS TO DO
 - [x] Make separate infra layer for persistence
 - [x] Make separate logger
 - [x] Docker setup
-- [ ] Swagger API Documentation
+- [x] Swagger API Documentation
 - [x] Make debugger and docker debugger in vscode
 - [ ] Make jest testing module setup
 - [ ] Make Auth Module separate
@@ -21,3 +21,5 @@ STEPS TO DO
 - [ ] Nodejs Event Dispatcher and Subscribers
 - [x] Repositories and Service Class
 - [x] Ports and Interfaces
+- [ ] Repository pattern for basic crud operations
+- [ ] Basic service repo for crud operations
