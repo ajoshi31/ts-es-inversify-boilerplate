@@ -4,7 +4,8 @@ import bodyParser from 'body-parser';
 import auth from 'http-auth';
 import monitorOptions from './status-config';
 import morgan from 'morgan';
-import { logger } from '../../../core/logger/logger';
+import * as swagger from 'swagger-express-ts';
+import { logger } from '@core/logger/logger';
 
 export default class Middleware {
   basic = auth.basic(
@@ -46,6 +47,26 @@ export default class Middleware {
     );
     this.app.use(express.json());
     this.app.use(morgan('combined', { stream: this.winstonStream }));
+    this.app.use('/api-docs/swagger', express.static('swagger'));
+    this.app.use(
+      '/api-docs/swagger/assets',
+      express.static('node_modules/swagger-ui-dist')
+    );
+
+    this.app.use(
+      swagger.express({
+        definition: {
+          info: {
+            title: 'My api',
+            version: '1.0'
+          },
+          externalDocs: {
+            url: 'http://localhost:8080'
+          }
+          // Models can be defined here
+        }
+      })
+    );
     this.app.use(statusMonitor.middleware);
     this.app.get('/status', this.basic.check(statusMonitor.pageRoute)); // us
 

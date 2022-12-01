@@ -16,7 +16,16 @@ import TYPES from '@ioc/constant/types';
 import { BaseController } from '@shared-infra/http/controller/BaseController';
 import validationMw from '@shared-infra/http/middleware/validateMw';
 import { IUser } from '@user-module/model/IUser';
+import {
+  ApiPath,
+  SwaggerDefinitionConstant,
+  ApiOperationGet
+} from 'swagger-express-ts';
 
+@ApiPath({
+  name: 'Users',
+  path: '/user'
+})
 @controller('/user')
 export abstract class UserController extends BaseController {
   final: any;
@@ -24,8 +33,29 @@ export abstract class UserController extends BaseController {
     super();
   }
 
+  @ApiOperationGet({
+    description: 'Get car object',
+    parameters: {
+      path: {
+        id: {
+          required: true,
+          type: SwaggerDefinitionConstant.Parameter.Type.STRING
+        }
+      }
+    },
+    responses: {
+      200: {},
+      400: {}
+    }
+  })
   @httpGet('/')
-  public async getUsers(request: Request, response: Response): Promise<any> {
+  public async getUsers({
+    request,
+    response
+  }: {
+    request: Request;
+    response: Response;
+  }): Promise<any> {
     const result = await this.userService.getUsers();
     if (result.isRight()) {
       this.final = result.value.getValue();
