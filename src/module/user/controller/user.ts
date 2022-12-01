@@ -18,7 +18,8 @@ import { IUser } from '@user-module/model/IUser';
 import {
   ApiPath,
   SwaggerDefinitionConstant,
-  ApiOperationGet
+  ApiOperationGet,
+  ApiOperationPost
 } from 'swagger-express-ts';
 import { Request, Response } from 'express';
 
@@ -48,14 +49,7 @@ export abstract class UserController extends BaseController {
     }
   })
   @httpGet('/')
-  public async getUsers({
-    request,
-    response
-  }: {
-    request: Request;
-    response: Response;
-  }): Promise<any> {
-    console.log(request, response);
+  public async getUser(request: Request, response: Response): Promise<any> {
     const result = await this.userService.getUsers();
     if (result.isRight()) {
       this.final = result.value.getValue();
@@ -63,8 +57,20 @@ export abstract class UserController extends BaseController {
     return this.ok<any>(response, this.final);
   }
 
+  @ApiOperationPost({
+    description: 'New User',
+    summary: 'USER new ',
+    parameters: {
+      body: { description: 'New user', required: true, model: 'UserDTO' }
+    },
+    responses: {
+      200: { description: 'Success' },
+      400: { description: 'Parameters fail' }
+    }
+  })
   @httpPost('/', validationMw(UserDTO))
   public async newUser(request: Request, response: Response): Promise<any> {
+    console.log(request, response);
     return await this.userService.newUser(request.body);
   }
 
