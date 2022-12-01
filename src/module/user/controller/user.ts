@@ -41,7 +41,7 @@ export abstract class UserController extends BaseController {
       200: {
         description: 'Success',
         type: SwaggerDefinitionConstant.Response.Type.ARRAY,
-        model: 'UserDTO'
+        model: 'User'
       }
     },
     security: {
@@ -61,7 +61,7 @@ export abstract class UserController extends BaseController {
     description: 'New User',
     summary: 'USER new ',
     parameters: {
-      body: { description: 'New user', required: true, model: 'UserDTO' }
+      body: { description: 'New user', required: true, model: 'User' }
     },
     responses: {
       200: { description: 'Success' },

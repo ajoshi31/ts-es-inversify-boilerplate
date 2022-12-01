@@ -1,4 +1,4 @@
-STEPS TO DO
+### STEPS TO DO
 
 - [x] Make morgan request logger
 - [x] Make separate infra layer for http
@@ -23,3 +23,10 @@ STEPS TO DO
 - [x] Ports and Interfaces
 - [ ] Repository pattern for basic crud operations
 - [ ] Basic service repo for crud operations
+
+### Clean Up Task:
+
+- [ ] Swagger Options with user id and auth token as separate configuration file
+- [ ] Complete swagger documentation for all routes
+- [ ] Validation and separate DTO for request and response
+- [ ] proper naming for files and folders
