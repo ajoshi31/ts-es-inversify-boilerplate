@@ -7,7 +7,6 @@ import {
 } from 'inversify-express-utils';
 
 import { inject } from 'inversify';
-import { Request, Response } from 'express';
 
 import { UserDTO } from './UserDto';
 
@@ -21,6 +20,7 @@ import {
   SwaggerDefinitionConstant,
   ApiOperationGet
 } from 'swagger-express-ts';
+import { Request, Response } from 'express';
 
 @ApiPath({
   name: 'Users',
@@ -34,18 +34,17 @@ export abstract class UserController extends BaseController {
   }
 
   @ApiOperationGet({
-    description: 'Get car object',
-    parameters: {
-      path: {
-        id: {
-          required: true,
-          type: SwaggerDefinitionConstant.Parameter.Type.STRING
-        }
+    description: 'Get user dto objects list',
+    summary: 'Get user list',
+    responses: {
+      200: {
+        description: 'Success',
+        type: SwaggerDefinitionConstant.Response.Type.ARRAY,
+        model: 'UserDTO'
       }
     },
-    responses: {
-      200: {},
-      400: {}
+    security: {
+      apiKeyHeader: []
     }
   })
   @httpGet('/')
@@ -56,11 +55,12 @@ export abstract class UserController extends BaseController {
     request: Request;
     response: Response;
   }): Promise<any> {
+    console.log(request, response);
     const result = await this.userService.getUsers();
     if (result.isRight()) {
       this.final = result.value.getValue();
     }
-    return this.ok<any>(response, result.value.getValue());
+    return this.ok<any>(response, this.final);
   }
 
   @httpPost('/', validationMw(UserDTO))

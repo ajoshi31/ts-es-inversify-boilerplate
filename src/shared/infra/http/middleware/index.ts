@@ -53,17 +53,18 @@ export default class Middleware {
       express.static('node_modules/swagger-ui-dist')
     );
 
+    const port = process.env.PORT;
     this.app.use(
       swagger.express({
         definition: {
           info: {
-            title: 'My api',
-            version: '1.0'
+            title: 'TS-ES Boilerplate API Documentation',
+            version: '1.0.0'
           },
           externalDocs: {
-            url: 'http://localhost:8080'
-          }
-          // Models can be defined here
+            url: `http://localhost:${port}/api/v1/`
+          },
+          basePath: '/api/v1'
         }
       })
     );
