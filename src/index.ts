@@ -5,6 +5,7 @@ import * as dotenv from 'dotenv';
 import { InversifyConfigContainer } from '@ioc/ioc-config';
 import Middleware from '@shared-infra/http/middleware';
 import { logger } from '@core/logger/logger';
+import { MongoDbConnection } from '@shared-infra/persistence/mongo/db';
 
 const expressApp = (async (): Promise<void> => {
   dotenv.config();
@@ -16,11 +17,22 @@ const expressApp = (async (): Promise<void> => {
   server.setConfig((app) => {
     new Middleware(app);
   });
-  const serverInstance = await server.build();
 
-  serverInstance.listen(port, () => {
-    logger.info(`Server running at http://127.0.0.1:${port}/`);
-  });
+  MongoDbConnection.initConnection()
+    .then(async () => {
+      MongoDbConnection.setAutoReconnect();
+      /**
+       * Configure error handler
+       */
+
+      const serverInstance = await server.build();
+      serverInstance.listen(port, () => {
+        logger.info(`Server running at http://127.0.0.1:${port}/`);
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 })();
 
 expressApp;
