@@ -1,3 +1,4 @@
+import UserModel from '@shared-infra/persistence/mongo/models/user';
 import { IUser } from '@user-module/model/IUser';
 import { IUserRepository } from '@user-module/repository/user.repository.interaface';
 
@@ -20,16 +21,20 @@ export class UserRepository implements IUserRepository {
     }
   ];
 
-  getSingleUserById(id: string): IUser | undefined {
-    return this.userStorage.find((user) => user.name === id);
+  async getSingleUserById(id: string): Promise<any> {
+    const result = await UserModel.find({});
+    return Promise.resolve({ s: result });
   }
-  getUserList(): IUser[] {
-    return this.userStorage;
+  async getUserList(): Promise<IUser[]> {
+    const result = await UserModel.find({});
+    return Promise.resolve(result);
   }
 
-  createUser(user: IUser): IUser[] {
-    this.userStorage.push(user);
-    return this.userStorage;
+  async createUser(user: IUser): Promise<any> {
+    const userToSave = new UserModel(user);
+    const result = await userToSave.save();
+
+    return Promise.resolve(result);
   }
 
   updateUser(id: string, user: IUser) {

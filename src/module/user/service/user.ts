@@ -15,16 +15,16 @@ export class UserService {
     private readonly _userRepository: IUserRepository
   ) {}
 
-  public getUsers(): UserResponseDTO {
+  public async getUsers(): Promise<UserResponseDTO> {
     try {
-      return right(Result.ok<any>(this._userRepository.getUserList()));
+      return right(Result.ok<any>(await this._userRepository.getUserList()));
     } catch (err: any) {
       return left(new AppError.UnexpectedError(err));
     }
   }
 
-  public getUser(id: string): IUser | undefined {
-    return this._userRepository.getSingleUserById(id);
+  public async getUser(id: string): Promise<any> {
+    return await this._userRepository.getSingleUserById(id);
   }
 
   public newUser(user: UserDTO) {

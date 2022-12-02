@@ -52,6 +52,7 @@
     "inversify": "^6.0.1",
     "inversify-express-utils": "^6.4.3",
     "module-alias": "^2.2.2",
+    "mongoose": "^6.7.5",
     "morgan": "^1.10.0",
     "reflect-metadata": "^0.1.13",
     "swagger-express-ts": "^1.1.0",
