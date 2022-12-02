@@ -21,9 +21,11 @@
 - [ ] Nodejs Event Dispatcher and Subscribers
 - [x] Repositories and Service Class
 - [x] Ports and Interfaces
-- [ ] Repository pattern for basic crud operations
+- [ ] Repository pattern for basic crud operations -> Base repo interface
 - [ ] Basic service repo for crud operations
 - [ ] docsify or storybook
+- [ ] Rate Limiter
+- [ ] Util Classes for basic functionality
 
 ### Clean Up Task:
 
@@ -31,3 +33,4 @@
 - [ ] Complete swagger documentation for all routes
 - [ ] Validation and separate DTO for request and response
 - [ ] proper naming for files and folders
+- [ ] Detailer error logging
