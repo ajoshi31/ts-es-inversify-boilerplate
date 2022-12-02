@@ -23,6 +23,7 @@
 - [x] Ports and Interfaces
 - [ ] Repository pattern for basic crud operations
 - [ ] Basic service repo for crud operations
+- [ ] docsify or storybook
 
 ### Clean Up Task:
 
