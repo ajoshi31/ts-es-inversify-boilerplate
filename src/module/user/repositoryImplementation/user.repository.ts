@@ -1,6 +1,7 @@
 import UserModel from '@shared-infra/persistence/mongo/models/user';
 import { IUser } from '@user-module/model/IUser';
-import { IUserRepository } from '@user-module/repository/user.repository.interaface';
+import { IUserRepository } from '@user-module/repository/iuser.repository.interaface';
+import { Types } from 'mongoose';
 
 import { injectable } from 'inversify';
 
@@ -22,8 +23,8 @@ export class UserRepository implements IUserRepository {
   ];
 
   async getSingleUserById(id: string): Promise<any> {
-    const result = await UserModel.find({});
-    return Promise.resolve({ s: result });
+    const myObjectId = new Types.ObjectId(id);
+    return await UserModel.findOne({ _id: myObjectId });
   }
   async getUserList(): Promise<IUser[]> {
     const result = await UserModel.find({});

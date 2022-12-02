@@ -57,6 +57,28 @@ export abstract class UserController extends BaseController {
     return this.ok<any>(response, this.final);
   }
 
+  @ApiOperationGet({
+    description: 'Get user dto objects list',
+    summary: 'Get user list',
+    responses: {
+      200: {
+        description: 'Success',
+        model: 'User'
+      }
+    },
+    security: {
+      apiKeyHeader: []
+    }
+  })
+  @httpGet('/:id')
+  public async getUserById(request: Request, response: Response): Promise<any> {
+    const result = await this.userService.getUser(request.params['id']);
+    if (result.isRight()) {
+      this.final = result.value.getValue();
+    }
+    return this.ok<any>(response, this.final);
+  }
+
   @ApiOperationPost({
     description: 'New User',
     summary: 'USER new ',

@@ -5,7 +5,7 @@ import { UserDTO } from '@user-module/controller/UserDto';
 import { UserResponseDTO } from '@user-module/controller/UserResponseDTO';
 import { UserMap } from '@user-module/mapper/user.mapper';
 import { IUser } from '@user-module/model/IUser';
-import { IUserRepository } from '@user-module/repository/user.repository.interaface';
+import { IUserRepository } from '@user-module/repository/iuser.repository.interaface';
 import { inject, injectable } from 'inversify';
 
 @injectable()
@@ -24,7 +24,12 @@ export class UserService {
   }
 
   public async getUser(id: string): Promise<any> {
-    return await this._userRepository.getSingleUserById(id);
+    const result = await this._userRepository.getSingleUserById(id);
+    try {
+      return right(Result.ok<any>(result));
+    } catch (err: any) {
+      return left(new AppError.UnexpectedError(err));
+    }
   }
 
   public newUser(user: UserDTO) {
