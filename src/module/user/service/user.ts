@@ -37,8 +37,13 @@ export class UserService {
     return this._userRepository.createUser(newUser);
   }
 
-  public updateUser(id: string, user: IUser) {
-    return this._userRepository.updateUser(id, user);
+  public async updateUser(id: string, user: IUser) {
+    const result = await this._userRepository.updateUser(id, user);
+    try {
+      return right(Result.ok<IUser>(result));
+    } catch (err: any) {
+      return left(new AppError.UnexpectedError(err));
+    }
   }
 
   public deleteUser(id: string): string {

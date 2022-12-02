@@ -38,14 +38,10 @@ export class UserRepository implements IUserRepository {
     return Promise.resolve(result);
   }
 
-  updateUser(id: string, user: IUser) {
-    this.userStorage.forEach((entry, index) => {
-      if (entry.name === id) {
-        this.userStorage[index] = user;
-      }
-    });
-
-    return user;
+  async updateUser(id: string, user: IUser): Promise<any> {
+    const myObjectId = new Types.ObjectId(id);
+    const result = await UserModel.findOneAndUpdate(myObjectId, user);
+    return Promise.resolve(result);
   }
 
   deleteUser(id: string): string {

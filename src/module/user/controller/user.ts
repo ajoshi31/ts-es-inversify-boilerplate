@@ -96,8 +96,15 @@ export abstract class UserController extends BaseController {
   }
 
   @httpPut('/:id')
-  public updateUser(request: Request): IUser {
-    return this.userService.updateUser(request.params.id, request.body);
+  public async updateUser(request: Request, response: Response): Promise<any> {
+    const result = await this.userService.updateUser(
+      request.params.id,
+      request.body
+    );
+
+    if (result.isRight()) {
+      return this.ok<any>(response, result.value);
+    }
   }
 
   @httpDelete('/:id')
