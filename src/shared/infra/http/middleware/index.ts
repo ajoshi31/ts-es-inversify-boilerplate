@@ -1,8 +1,9 @@
 import basicMiddleware from './global/basic';
 import express from 'express';
-import morganMiddleware from './global/morgan';
+
 import statusMonitorMiddleware from './global/status-monitor/status-monitor';
 import swaggerMiddleware from './global/swagger';
+import morganMiddleware from './global/morgan';
 
 export default class Middleware {
   public app: express.Application;
