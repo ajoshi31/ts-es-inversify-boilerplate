@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { validate } from 'class-validator';
 import { plainToInstance } from 'class-transformer';
 
-const validationMw = (dtoClass: any) => {
+const dtoRouteValidationMiddleware = (dtoClass: any) => {
   return function (req: Request, res: Response, next: NextFunction) {
     const output: any = plainToInstance(dtoClass, req.body);
     validate(output, { skipMissingProperties: true }).then((errors) => {
@@ -20,4 +20,4 @@ const validationMw = (dtoClass: any) => {
   };
 };
 
-export default validationMw;
+export default dtoRouteValidationMiddleware;

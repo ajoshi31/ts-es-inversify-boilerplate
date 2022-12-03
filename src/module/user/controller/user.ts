@@ -1,3 +1,5 @@
+import { Request, Response } from 'express';
+import { inject } from 'inversify';
 import {
   controller,
   httpGet,
@@ -5,23 +7,19 @@ import {
   httpPut,
   httpDelete
 } from 'inversify-express-utils';
-
-import { inject } from 'inversify';
-
-import { UserDTO } from './UserDto';
-
-import { UserService } from '@user-module/service/user';
-import TYPES from '@ioc/constant/types';
-import { BaseController } from '@shared-infra/http/controller/BaseController';
-import validationMw from '@shared-infra/http/middleware/validateMw';
-import { IUser } from '@user-module/model/IUser';
 import {
   ApiPath,
   SwaggerDefinitionConstant,
   ApiOperationGet,
   ApiOperationPost
 } from 'swagger-express-ts';
-import { Request, Response } from 'express';
+
+import TYPES from '@ioc/constant/types';
+import { BaseController } from '@shared-infra/http/controller/BaseController';
+import dtoRouteValidationMiddleware from '@shared-infra/http/middleware/dtoRouteValidationMiddleware';
+
+import { UserDTO } from './UserDto';
+import { UserService } from '@user-module/service/user';
 
 @ApiPath({
   name: 'Users',
@@ -90,7 +88,7 @@ export abstract class UserController extends BaseController {
       400: { description: 'Parameters fail' }
     }
   })
-  @httpPost('/', validationMw(UserDTO))
+  @httpPost('/', dtoRouteValidationMiddleware(UserDTO))
   public async newUser(request: Request, response: Response): Promise<any> {
     return await this.userService.newUser(request.body);
   }
