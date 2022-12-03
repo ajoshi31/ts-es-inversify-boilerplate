@@ -18,7 +18,7 @@ import TYPES from '@ioc/constant/types';
 import { BaseController } from '@shared-infra/http/controller/BaseController';
 import dtoRouteValidationMiddleware from '@shared-infra/http/middleware/dtoRouteValidationMiddleware';
 
-import { UserDTO } from './UserDto';
+import { UserDTO } from '../dtos/UserDto';
 import { UserService } from '@user-module/service/user';
 
 @ApiPath({

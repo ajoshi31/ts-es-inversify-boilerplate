@@ -12,5 +12,12 @@
       "group": "localhost"
     }
   ],
-  "cSpell.words": ["docsify", "initialise", "interaface", "inversify"]
+  "cSpell.words": [
+    "docsify",
+    "dtos",
+    "initialise",
+    "interaface",
+    "inversify",
+    "iuser"
+  ]
 }

@@ -1,4 +1,4 @@
-import { UserDTO } from '@user-module/controller/UserDto';
+import { UserDTO } from '@user-module/dtos/UserDto';
 import { IUser } from '@user-module/model/IUser';
 
 export class UserMap {

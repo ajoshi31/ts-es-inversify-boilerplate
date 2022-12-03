@@ -1,8 +1,9 @@
 import { AppError } from '@core/error/AppError';
 import { left, Result, right } from '@core/result/result';
 import TYPES from '@ioc/constant/types';
-import { UserDTO } from '@user-module/controller/UserDto';
-import { UserResponseDTO } from '@user-module/controller/UserResponseDTO';
+import { UserDTO } from '@user-module/dtos/UserDto';
+import { UserResponseDTO } from '@user-module/dtos/UserResponseDTO';
+
 import { UserMap } from '@user-module/mapper/user.mapper';
 import { IUser } from '@user-module/model/IUser';
 import { IUserRepository } from '@user-module/repository/iuser.repository.interaface';
