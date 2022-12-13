@@ -3,8 +3,11 @@ import TYPES from './constant/types';
 import '../module/user/controller/user';
 import { UserService } from '@user-module/service/user';
 import { logger } from '@core/logger/logger';
-import { IUserRepository } from '@user-module/repository/iuser.repository.interaface';
+// import { IUserRepository } from '@user-module/repository/iuser.repository.interaface';
 import { UserRepository } from '@user-module/repositoryImplementation/user.repository';
+import { IBaseRepository } from '@shared-infra/persistence/mongo/IBaseRepository';
+import { IUser } from '@user-module/model/IUser';
+import { IUserRepository } from '@user-module/repository/iuser.repository.interaface';
 
 const InversifyConfigContainer = async () => {
   const container = new Container();

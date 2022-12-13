@@ -1,14 +1,13 @@
 import mongoose, { Schema, model } from 'mongoose';
 
-interface IUser {
+interface ITest {
   name: string;
   email: string;
 }
 
-const userSchema = new Schema<IUser>({
+const testSchema = new Schema<ITest>({
   name: { type: String, required: true },
   email: { type: String, required: true }
 });
 
-// const UserModel = mongoose.model('User', userSchema);
-export default userSchema;
+export default testSchema;

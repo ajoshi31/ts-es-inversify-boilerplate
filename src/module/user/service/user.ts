@@ -16,38 +16,37 @@ export class UserService {
     private readonly _userRepository: IUserRepository
   ) {}
 
-  public async getUsers(): Promise<UserResponseDTO> {
-    try {
-      return right(Result.ok<any>(await this._userRepository.getUserList()));
-    } catch (err: any) {
-      return left(new AppError.UnexpectedError(err));
-    }
-  }
-
-  public async getUser(id: string): Promise<any> {
-    const result = await this._userRepository.getSingleUserById(id);
-    try {
-      return right(Result.ok<any>(result));
-    } catch (err: any) {
-      return left(new AppError.UnexpectedError(err));
-    }
-  }
-
   public newUser(user: UserDTO) {
     const newUser: IUser = UserMap.fromDTOToModel(user);
-    return this._userRepository.createUser(newUser);
+    return this._userRepository.create(newUser);
   }
+  // public async getUsers(): Promise<UserResponseDTO> {
+  //   try {
+  //     return right(Result.ok<any>(await this._userRepository.getUserList()));
+  //   } catch (err: any) {
+  //     return left(new AppError.UnexpectedError(err));
+  //   }
+  // }
 
-  public async updateUser(id: string, user: IUser) {
-    const result = await this._userRepository.updateUser(id, user);
-    try {
-      return right(Result.ok<IUser>(result));
-    } catch (err: any) {
-      return left(new AppError.UnexpectedError(err));
-    }
-  }
+  // public async getUser(id: string): Promise<any> {
+  //   const result = await this._userRepository.getSingleUserById(id);
+  //   try {
+  //     return right(Result.ok<any>(result));
+  //   } catch (err: any) {
+  //     return left(new AppError.UnexpectedError(err));
+  //   }
+  // }
 
-  public deleteUser(id: string): string {
-    return this._userRepository.deleteUser(id);
-  }
+  // public async updateUser(id: string, user: IUser) {
+  //   const result = await this._userRepository.updateUser(id, user);
+  //   try {
+  //     return right(Result.ok<IUser>(result));
+  //   } catch (err: any) {
+  //     return left(new AppError.UnexpectedError(err));
+  //   }
+  // }
+
+  // public deleteUser(id: string): string {
+  //   return this._userRepository.deleteUser(id);
+  // }
 }

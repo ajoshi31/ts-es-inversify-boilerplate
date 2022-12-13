@@ -32,50 +32,50 @@ export abstract class UserController extends BaseController {
     super();
   }
 
-  @ApiOperationGet({
-    description: 'Get user dto objects list',
-    summary: 'Get user list',
-    responses: {
-      200: {
-        description: 'Success',
-        type: SwaggerDefinitionConstant.Response.Type.ARRAY,
-        model: 'User'
-      }
-    },
-    security: {
-      apiKeyHeader: []
-    }
-  })
-  @httpGet('/')
-  public async getUser(request: Request, response: Response): Promise<any> {
-    const result = await this.userService.getUsers();
-    if (result.isRight()) {
-      this.final = result.value.getValue();
-    }
-    return this.ok<any>(response, this.final);
-  }
+  // @ApiOperationGet({
+  //   description: 'Get user dto objects list',
+  //   summary: 'Get user list',
+  //   responses: {
+  //     200: {
+  //       description: 'Success',
+  //       type: SwaggerDefinitionConstant.Response.Type.ARRAY,
+  //       model: 'User'
+  //     }
+  //   },
+  //   security: {
+  //     apiKeyHeader: []
+  //   }
+  // })
+  // @httpGet('/')
+  // public async getUser(request: Request, response: Response): Promise<any> {
+  //   const result = await this.userService.getUsers();
+  //   if (result.isRight()) {
+  //     this.final = result.value.getValue();
+  //   }
+  //   return this.ok<any>(response, this.final);
+  // }
 
-  @ApiOperationGet({
-    description: 'Get user dto objects list',
-    summary: 'Get user list',
-    responses: {
-      200: {
-        description: 'Success',
-        model: 'User'
-      }
-    },
-    security: {
-      apiKeyHeader: []
-    }
-  })
-  @httpGet('/:id')
-  public async getUserById(request: Request, response: Response): Promise<any> {
-    const result = await this.userService.getUser(request.params['id']);
-    if (result.isRight()) {
-      this.final = result.value.getValue();
-    }
-    return this.ok<any>(response, this.final);
-  }
+  // @ApiOperationGet({
+  //   description: 'Get user dto objects list',
+  //   summary: 'Get user list',
+  //   responses: {
+  //     200: {
+  //       description: 'Success',
+  //       model: 'User'
+  //     }
+  //   },
+  //   security: {
+  //     apiKeyHeader: []
+  //   }
+  // })
+  // @httpGet('/:id')
+  // public async getUserById(request: Request, response: Response): Promise<any> {
+  //   const result = await this.userService.getUser(request.params['id']);
+  //   if (result.isRight()) {
+  //     this.final = result.value.getValue();
+  //   }
+  //   return this.ok<any>(response, this.final);
+  // }
 
   @ApiOperationPost({
     description: 'New User',
@@ -93,20 +93,20 @@ export abstract class UserController extends BaseController {
     return await this.userService.newUser(request.body);
   }
 
-  @httpPut('/:id')
-  public async updateUser(request: Request, response: Response): Promise<any> {
-    const result = await this.userService.updateUser(
-      request.params.id,
-      request.body
-    );
+  // @httpPut('/:id')
+  // public async updateUser(request: Request, response: Response): Promise<any> {
+  //   const result = await this.userService.updateUser(
+  //     request.params.id,
+  //     request.body
+  //   );
 
-    if (result.isRight()) {
-      return this.ok<any>(response, result.value);
-    }
-  }
+  //   if (result.isRight()) {
+  //     return this.ok<any>(response, result.value);
+  //   }
+  // }
 
-  @httpDelete('/:id')
-  public deleteUser(request: Request): string {
-    return this.userService.deleteUser(request.params.id);
-  }
+  // @httpDelete('/:id')
+  // public deleteUser(request: Request): string {
+  //   return this.userService.deleteUser(request.params.id);
+  // }
 }

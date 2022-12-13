@@ -12,6 +12,7 @@
     "no-loops/no-loops": 0, // 2 means throw an ERROR
     "no-console": 1,
     "prettier/prettier": 2,
-    "@typescript-eslint/no-namespace": "off"
+    "@typescript-eslint/no-namespace": "off",
+    "no-empty-interface": 0
   }
 }
