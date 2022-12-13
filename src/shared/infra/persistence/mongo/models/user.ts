@@ -10,5 +10,4 @@ const userSchema = new Schema<IUser>({
   email: { type: String, required: true }
 });
 
-// const UserModel = mongoose.model('User', userSchema);
 export default userSchema;
