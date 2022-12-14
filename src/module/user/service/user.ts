@@ -24,8 +24,9 @@ export class UserService {
 
   public async updateUser(id: string, user: IUser) {
     const result = await this._userRepository.update(id, user);
+    const userDTO = UserMap.fromPersistenceToDTO(result);
     try {
-      return right(Result.ok());
+      return right(userDTO);
     } catch (err: any) {
       return left(new AppError.UnexpectedError(err));
     }

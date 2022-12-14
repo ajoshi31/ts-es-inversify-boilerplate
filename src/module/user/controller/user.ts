@@ -101,7 +101,7 @@ export abstract class UserController extends BaseController {
     );
 
     if (result.isRight()) {
-      return this.ok<any>(response, true);
+      return this.ok<any>(response, result.value);
     }
   }
 

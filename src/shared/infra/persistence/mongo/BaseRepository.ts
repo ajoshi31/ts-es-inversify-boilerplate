@@ -1,29 +1,30 @@
 import { injectable, unmanaged } from 'inversify';
-import mongoose, { Schema, SchemaDefinition } from 'mongoose';
-import { MongoDbConnection } from './db';
+import { Model, model, Schema, UpdateQuery } from 'mongoose';
 import { IBaseRepository } from './IBaseRepository';
 
 @injectable()
 export abstract class BaseRepository<EntityType>
   implements IBaseRepository<EntityType>
 {
-  private model: any;
-  protected formatter: any = Object;
+  // private model: Model<EntityType>;
+  private model: Model<EntityType>;
+
   constructor(@unmanaged() modelName: string, @unmanaged() schema: Schema) {
-    this.model = mongoose.model(modelName, schema);
+    this.model = model<EntityType>(modelName, schema);
   }
 
-  async create(entity: EntityType): Promise<void> {
+  async create(entity: EntityType): Promise<any> {
     const userToSave = new this.model(entity);
     const result = await userToSave.save();
     return Promise.resolve(result);
   }
 
-  async update(_id: string, model: EntityType): Promise<void> {
-    await this.model.updateOne({ _id }, model);
-  }
-
-  async delete(_id: string): Promise<{ n: number }> {
-    return this.model.deleteOne({ _id });
+  async update(_id: string, entity: UpdateQuery<any>): Promise<any> {
+    console.log(_id, entity);
+    const result = await this.model.findOneAndUpdate({ _id }, entity, {
+      new: true
+    });
+    console.log(result);
+    return Promise.resolve(result);
   }
 }

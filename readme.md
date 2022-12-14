@@ -26,6 +26,7 @@
 - [ ] docsify or storybook
 - [ ] Rate Limiter
 - [ ] Util Classes for basic functionality
+- [ ] TypeGoose
 
 ### Clean Up Task:
 

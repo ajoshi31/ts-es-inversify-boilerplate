@@ -7,6 +7,12 @@ import { ApiModel, ApiModelProperty } from 'swagger-express-ts';
 })
 export class UserDTO {
   @ApiModelProperty({
+    description: 'userId'
+  })
+  @Length(10, 20)
+  _id!: string;
+
+  @ApiModelProperty({
     description: 'username',
     required: true
   })
