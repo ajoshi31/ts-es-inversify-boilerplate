@@ -1,12 +1,12 @@
 import { AppError } from '@core/error/AppError';
 import { left, Result, right } from '@core/result/result';
 import TYPES from '@ioc/constant/types';
-import { UserDTO } from '@user-module/dtos/UserDto';
-import { UserResponseDTO } from '@user-module/dtos/UserResponseDTO';
+import { UserDTO } from '@user-module/application/dtos/UserDto';
+import { UserResponseDTO } from '@user-module/application/dtos/UserResponseDTO';
 
 import { UserMap } from '@user-module/mapper/user.mapper';
-import { IUser } from '@user-module/model/IUser';
-import { IUserRepository } from '@user-module/repository/iuser.repository.interaface';
+import { IUser } from '@user-module/domain/model/IUser';
+import { IUserRepository } from '@user-module/domain/repository/iuser.repository.interaface';
 import { ok } from 'assert';
 import { inject, injectable } from 'inversify';
 

@@ -1,6 +1,6 @@
-import { UserDTO } from '@user-module/dtos/UserDto';
-import { UserResponseDTO } from '@user-module/dtos/UserResponseDTO';
-import { IUser } from '@user-module/model/IUser';
+import { UserDTO } from '@user-module/application/dtos/UserDto';
+import { UserResponseDTO } from '@user-module/application/dtos/UserResponseDTO';
+import { IUser } from '@user-module/domain/model/IUser';
 
 export class UserMap {
   public static fromDTOToModel(user: UserDTO): IUser {

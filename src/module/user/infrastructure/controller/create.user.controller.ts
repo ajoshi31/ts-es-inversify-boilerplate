@@ -3,7 +3,7 @@ import { inject, injectable } from 'inversify';
 
 import TYPES from '@ioc/constant/types';
 import { BaseController } from '@shared-infra/http/controller/BaseController';
-import { UserService } from '@user-module/service/user';
+import { UserService } from '@user-module/application/service/user';
 import { AppError } from '@core/error/AppError';
 
 @injectable()
