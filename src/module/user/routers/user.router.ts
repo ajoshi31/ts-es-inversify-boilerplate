@@ -20,9 +20,7 @@ export abstract class UserRouters {
 
     @inject(TYPES.UpdateUserController)
     private readonly _updateUserController: UpdateUserController
-  ) {
-    console.log('hello');
-  }
+  ) {}
 
   @ApiOperationPost({
     description: 'Create New User',
