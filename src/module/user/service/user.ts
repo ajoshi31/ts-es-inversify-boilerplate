@@ -7,6 +7,7 @@ import { UserResponseDTO } from '@user-module/dtos/UserResponseDTO';
 import { UserMap } from '@user-module/mapper/user.mapper';
 import { IUser } from '@user-module/model/IUser';
 import { IUserRepository } from '@user-module/repository/iuser.repository.interaface';
+import { ok } from 'assert';
 import { inject, injectable } from 'inversify';
 
 @injectable()
@@ -20,6 +21,16 @@ export class UserService {
     const newUser: IUser = UserMap.fromDTOToModel(user);
     return this._userRepository.create(newUser);
   }
+
+  public async updateUser(id: string, user: IUser) {
+    const result = await this._userRepository.update(id, user);
+    try {
+      return right(Result.ok());
+    } catch (err: any) {
+      return left(new AppError.UnexpectedError(err));
+    }
+  }
+
   // public async getUsers(): Promise<UserResponseDTO> {
   //   try {
   //     return right(Result.ok<any>(await this._userRepository.getUserList()));

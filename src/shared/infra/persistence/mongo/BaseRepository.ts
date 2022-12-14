@@ -8,6 +8,7 @@ export abstract class BaseRepository<EntityType>
   implements IBaseRepository<EntityType>
 {
   private model: any;
+  protected formatter: any = Object;
   constructor(@unmanaged() modelName: string, @unmanaged() schema: Schema) {
     this.model = mongoose.model(modelName, schema);
   }
@@ -16,5 +17,13 @@ export abstract class BaseRepository<EntityType>
     const userToSave = new this.model(entity);
     const result = await userToSave.save();
     return Promise.resolve(result);
+  }
+
+  async update(_id: string, model: EntityType): Promise<void> {
+    await this.model.updateOne({ _id }, model);
+  }
+
+  async delete(_id: string): Promise<{ n: number }> {
+    return this.model.deleteOne({ _id });
   }
 }

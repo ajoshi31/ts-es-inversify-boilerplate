@@ -93,17 +93,17 @@ export abstract class UserController extends BaseController {
     return await this.userService.newUser(request.body);
   }
 
-  // @httpPut('/:id')
-  // public async updateUser(request: Request, response: Response): Promise<any> {
-  //   const result = await this.userService.updateUser(
-  //     request.params.id,
-  //     request.body
-  //   );
+  @httpPut('/:id')
+  public async updateUser(request: Request, response: Response): Promise<any> {
+    const result = await this.userService.updateUser(
+      request.params.id,
+      request.body
+    );
 
-  //   if (result.isRight()) {
-  //     return this.ok<any>(response, result.value);
-  //   }
-  // }
+    if (result.isRight()) {
+      return this.ok<any>(response, true);
+    }
+  }
 
   // @httpDelete('/:id')
   // public deleteUser(request: Request): string {
