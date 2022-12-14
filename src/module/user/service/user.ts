@@ -17,15 +17,20 @@ export class UserService {
     private readonly _userRepository: IUserRepository
   ) {}
 
-  public newUser(user: UserDTO) {
-    const newUser: IUser = UserMap.fromDTOToModel(user);
-    return this._userRepository.create(newUser);
+  public async newUser(user: UserDTO) {
+    try {
+      const newUser: IUser = UserMap.fromDTOToModel(user);
+      const userCreatedOrError = await this._userRepository.create(newUser);
+      return right(Result.ok<any>(userCreatedOrError));
+    } catch (err: any) {
+      return left(new AppError.UnexpectedError(err)) as UserResponseDTO;
+    }
   }
 
   public async updateUser(id: string, user: IUser) {
-    const result = await this._userRepository.update(id, user);
-    const userDTO = UserMap.fromPersistenceToDTO(result);
     try {
+      const result = await this._userRepository.update(id, user);
+      const userDTO = UserMap.fromPersistenceToDTO(result);
       return right(userDTO);
     } catch (err: any) {
       return left(new AppError.UnexpectedError(err));
