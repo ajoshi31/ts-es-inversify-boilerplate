@@ -35,7 +35,7 @@ export abstract class UserRouters {
     }
   })
   @httpPost('/', dtoRouteValidationMiddleware(UserDTO))
-  public async newUser(request: Request, response: Response): Promise<any> {
+  public async createUser(request: Request, response: Response): Promise<any> {
     return this._createUserController.execute(request, response);
   }
 

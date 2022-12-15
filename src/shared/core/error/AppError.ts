@@ -17,4 +17,19 @@ export namespace AppError {
       return new UnexpectedError(err);
     }
   }
+
+  export class DatabaseError extends Result<UseCaseError> {
+    public constructor(err: any) {
+      super(false, {
+        message: `A database error occurred.`,
+        error: err
+      } as UseCaseError);
+      logger.error(`[Database Error]: A database error occurred`);
+      logger.error(err);
+    }
+
+    public static create(err: DatabaseError): DatabaseError {
+      return new DatabaseError(err);
+    }
+  }
 }

@@ -1,11 +1,12 @@
 import { UseCaseError } from '@core/error/UseCaseError';
 import { Result } from '@core/result/result';
+import { IUser } from '@user-module/domain/model/IUser';
 
 export namespace UserErrors {
-  export class UserCreationError extends Result<UseCaseError> {
-    constructor() {
+  export class UserNotCreatedError extends Result<UseCaseError> {
+    constructor(user: IUser) {
       super(false, {
-        message: `There is some error while creating the user`
+        message: `UserCannot be created for data ${user}`
       } as UseCaseError);
     }
   }

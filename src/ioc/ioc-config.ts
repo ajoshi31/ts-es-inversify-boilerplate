@@ -1,7 +1,7 @@
 import { Container } from 'inversify';
 import TYPES from './constant/types';
 import '../module/user/routers/user.router';
-import { UserService } from '@user-module/application/service/user';
+import { UserService } from '@user-module/application/service/user.service';
 import { logger } from '@core/logger/logger';
 import { UserRepository } from '@user-module/infrastructure/repositoryImplementation/user.repository';
 import { IUserRepository } from '@user-module/domain/repository/iuser.repository.interaface';
