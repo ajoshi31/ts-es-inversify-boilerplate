@@ -8,10 +8,7 @@ import { IUserRepository } from '@user-module/domain/repository/IUserRepository'
 import { UserErrors } from '../errors/UserError';
 import { UserDTO } from '../dtos/UserDto';
 
-type UserResponse = Either<
-  AppError.UnexpectedError | Result<UserDTO>,
-  Result<void>
->;
+type UserResponse = Either<AppError.UnexpectedError, Result<UserDTO>>;
 
 @injectable()
 export class UserService {
@@ -33,7 +30,7 @@ export class UserService {
       } catch (err) {
         return left(new UserErrors.UserNotCreatedError(userEntity));
       }
-      return right(Result.ok<any>(result));
+      return right(Result.ok<UserDTO>(result));
     } catch (err) {
       return left(new AppError.UnexpectedError(err));
     }
