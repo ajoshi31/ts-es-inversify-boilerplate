@@ -1,6 +1,5 @@
 import TYPES from '@ioc/constant/types';
 import DtoRouteValidationMiddleware from '@shared-infra/http/middleware/DtoRouteValidationMiddleware';
-
 import { UserDTO } from '@user-module/application/dtos/UserDto';
 import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
