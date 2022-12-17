@@ -4,7 +4,7 @@ import { AppError } from '@core/error/AppError';
 import { Either, left, Result, right } from '@core/result/result';
 import { UserMap } from '@user-module/mapper/user.mapper';
 import { IUser } from '@user-module/domain/entity/IUser';
-import { IUserRepository } from '@user-module/domain/repository/iuser.repository.interaface';
+import { IUserRepository } from '@user-module/domain/repository/iuser.repository';
 import { UserErrors } from '../user-errors/user.error';
 import { UserDTO } from '../dtos/UserDTO';
 
