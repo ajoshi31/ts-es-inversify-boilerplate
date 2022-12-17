@@ -1,5 +1,5 @@
 import express from 'express';
-import { logger } from '@core/logger/logger';
+import { logger } from '@core/logger/Logger';
 import morgan from 'morgan';
 
 const winstonStream = {

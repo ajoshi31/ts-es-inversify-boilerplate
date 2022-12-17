@@ -1,12 +1,12 @@
 import { Container } from 'inversify';
 import TYPES from './constant/types';
 import '../module/user/routers/user.router';
-import { UserService } from '@user-module/application/service/user.service';
-import { logger } from '@core/logger/logger';
-import { UserRepository } from '@user-module/infrastructure/repositoryImplementation/user.repository';
-import { IUserRepository } from '@user-module/domain/repository/iuser.repository';
-import { CreateUserController } from '@user-module/infrastructure/controller/create.user.controller';
-import { UpdateUserController } from '@user-module/infrastructure/controller/update.user.controller';
+import { UserService } from '@user-module/application/service/UserService';
+import { logger } from '@core/logger/Logger';
+import { UserRepository } from '@user-module/infrastructure/repository-implementation/UserRepository';
+import { IUserRepository } from '@user-module/domain/repository/IUserRepository';
+import { CreateUserController } from '@user-module/infrastructure/controller/CreateUserController';
+import { UpdateUserController } from '@user-module/infrastructure/controller/UpdateUserController';
 
 const InversifyConfigContainer = async () => {
   const container = new Container();

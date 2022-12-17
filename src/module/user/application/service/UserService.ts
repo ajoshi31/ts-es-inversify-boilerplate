@@ -1,12 +1,12 @@
 import { inject, injectable } from 'inversify';
 import TYPES from '@ioc/constant/types';
 import { AppError } from '@core/error/AppError';
-import { Either, left, Result, right } from '@core/result/result';
-import { UserMap } from '@user-module/mapper/user.mapper';
+import { Either, left, Result, right } from '@core/result/Result';
+import { UserMap } from '@user-module/mapper/UserMapper';
 import { IUser } from '@user-module/domain/entity/IUser';
-import { IUserRepository } from '@user-module/domain/repository/iuser.repository';
-import { UserErrors } from '../user-errors/user.error';
-import { UserDTO } from '../dtos/UserDTO';
+import { IUserRepository } from '@user-module/domain/repository/IUserRepository';
+import { UserErrors } from '../errors/UserError';
+import { UserDTO } from '../dtos/UserDto';
 
 type UserResponse = Either<
   AppError.UnexpectedError | Result<UserDTO>,

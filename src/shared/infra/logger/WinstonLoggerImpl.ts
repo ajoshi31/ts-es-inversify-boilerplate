@@ -1,7 +1,7 @@
 import ILogger from '@core/logger/ILogger';
 import { Logger } from 'winston';
 
-import { WinstonLogger } from './winston';
+import { WinstonLogger } from './Winston';
 
 class WinstonLoggerImpl implements ILogger {
   private logger: Logger;

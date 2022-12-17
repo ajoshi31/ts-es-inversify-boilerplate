@@ -1,13 +1,13 @@
 import TYPES from '@ioc/constant/types';
-import dtoRouteValidationMiddleware from '@shared-infra/http/middleware/dtoRouteValidationMiddleware';
+import DtoRouteValidationMiddleware from '@shared-infra/http/middleware/DtoRouteValidationMiddleware';
 
-import { UserDTO } from '@user-module/application/dtos/UserDTO';
+import { UserDTO } from '@user-module/application/dtos/UserDto';
 import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 import { controller, httpPost, httpPut } from 'inversify-express-utils';
 import { ApiOperationPost, ApiPath } from 'swagger-express-ts';
-import { CreateUserController } from '../controller/create.user.controller';
-import { UpdateUserController } from '../controller/update.user.controller';
+import { CreateUserController } from '../controller/CreateUserController';
+import { UpdateUserController } from '../controller/UpdateUserController';
 
 @ApiPath({
   name: 'Users',
@@ -34,7 +34,7 @@ export abstract class UserRouters {
       400: { description: 'Something fails' }
     }
   })
-  @httpPost('/', dtoRouteValidationMiddleware(UserDTO))
+  @httpPost('/', DtoRouteValidationMiddleware(UserDTO))
   public async createUser(request: Request, response: Response): Promise<any> {
     return this._createUserController.execute(request, response);
   }

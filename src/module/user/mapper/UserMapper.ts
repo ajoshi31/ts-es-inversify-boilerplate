@@ -1,5 +1,5 @@
-import { IUserModel } from '@shared-infra/persistence/mongo/models/user.model';
-import { UserDTO } from '@user-module/application/dtos/UserDTO';
+import { IUserModel } from '@shared-infra/persistence/mongo/models/UserModel';
+import { UserDTO } from '@user-module/application/dtos/UserDto';
 import { User } from '@user-module/domain/entity/User';
 
 export class UserMap {

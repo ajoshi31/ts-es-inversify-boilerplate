@@ -1,5 +1,5 @@
 import { IBaseRepository } from '@shared-infra/persistence/mongo/IBaseRepository';
-import { IUserModel } from '@shared-infra/persistence/mongo/models/user.model';
+import { IUserModel } from '@shared-infra/persistence/mongo/models/UserModel';
 
 // Here we should be passing the ORM model entity
 export interface IUserRepository extends IBaseRepository<IUserModel> {

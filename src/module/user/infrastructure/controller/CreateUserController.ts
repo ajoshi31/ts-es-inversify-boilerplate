@@ -3,9 +3,9 @@ import { inject, injectable } from 'inversify';
 
 import TYPES from '@ioc/constant/types';
 import { BaseController } from '@shared-infra/http/controller/BaseController';
-import { UserService } from '@user-module/application/service/user.service';
+import { UserService } from '@user-module/application/service/UserService';
 import { AppError } from '@core/error/AppError';
-import { UserDTO } from '@user-module/application/dtos/UserDTO';
+import { UserDTO } from '@user-module/application/dtos/UserDto';
 
 @injectable()
 export class CreateUserController extends BaseController {

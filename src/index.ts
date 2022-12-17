@@ -5,9 +5,9 @@ import * as dotenv from 'dotenv';
 
 import { InversifyConfigContainer } from '@ioc/ioc-config';
 import { InversifyExpressServer } from 'inversify-express-utils';
-import Middleware from '@shared-infra/http/middleware';
-import { MongoDbConnection } from '@shared-infra/persistence/mongo/db';
-import { logger } from '@core/logger/logger';
+import Middleware from '@shared-infra/http/middleware/Index';
+import { MongoDbConnection } from '@shared-infra/persistence/mongo/Database';
+import { logger } from '@core/logger/Logger';
 dotenv.config();
 const port = process.env.PORT;
 

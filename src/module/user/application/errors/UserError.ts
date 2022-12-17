@@ -1,5 +1,5 @@
 import { UseCaseError } from '@core/error/UseCaseError';
-import { Result } from '@core/result/result';
+import { Result } from '@core/result/Result';
 import { IUser } from '@user-module/domain/entity/IUser';
 import { User } from '@user-module/domain/entity/User';
 

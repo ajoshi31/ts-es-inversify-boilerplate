@@ -1,4 +1,4 @@
-import { logger } from '@core/logger/logger';
+import { logger } from '@core/logger/Logger';
 import mongoose from 'mongoose';
 
 export class MongoDbConnection {

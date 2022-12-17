@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 import TYPES from '@ioc/constant/types';
 import { BaseController } from '@shared-infra/http/controller/BaseController';
-import { UserService } from '@user-module/application/service/user.service';
+import { UserService } from '@user-module/application/service/UserService';
 
 @injectable()
 export class UpdateUserController extends BaseController {
