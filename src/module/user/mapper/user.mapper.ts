@@ -1,7 +1,6 @@
-import { IModelUser } from '@shared-infra/persistence/mongo/models/user';
+import { IUserModel } from '@shared-infra/persistence/mongo/models/user.model';
 import { UserDTO } from '@user-module/application/dtos/UserDTO';
-import { IUser } from '@user-module/domain/model/IUser';
-import { User } from '@user-module/domain/model/User';
+import { User } from '@user-module/domain/entity/User';
 
 export class UserMap {
   public static fromDTOToDomain(user: UserDTO): User {
@@ -19,7 +18,7 @@ export class UserMap {
     };
   }
 
-  public static fromDomainToPersistence(user: User): IModelUser {
+  public static fromDomainToPersistence(user: User): IUserModel {
     return {
       name: user.getName,
       email: user.getEmail

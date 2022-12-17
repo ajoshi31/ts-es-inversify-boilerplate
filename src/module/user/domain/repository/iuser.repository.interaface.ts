@@ -1,5 +1,7 @@
 import { IBaseRepository } from '@shared-infra/persistence/mongo/IBaseRepository';
-import { IModelUser } from '@shared-infra/persistence/mongo/models/user';
+import { IUserModel } from '@shared-infra/persistence/mongo/models/user.model';
 
 // Here we should be passing the ORM model entity
-export interface IUserRepository extends IBaseRepository<IModelUser> {}
+export interface IUserRepository extends IBaseRepository<IUserModel> {
+  // If any other implementation are happening here we can pass the direct domain entity class
+}

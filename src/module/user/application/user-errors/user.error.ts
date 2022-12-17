@@ -1,7 +1,7 @@
 import { UseCaseError } from '@core/error/UseCaseError';
 import { Result } from '@core/result/result';
-import { IUser } from '@user-module/domain/model/IUser';
-import { User } from '@user-module/domain/model/User';
+import { IUser } from '@user-module/domain/entity/IUser';
+import { User } from '@user-module/domain/entity/User';
 
 export namespace UserErrors {
   export class UserNotCreatedError extends Result<UseCaseError> {

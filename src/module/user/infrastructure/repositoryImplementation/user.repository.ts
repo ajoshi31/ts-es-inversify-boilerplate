@@ -1,13 +1,13 @@
 import { injectable } from 'inversify';
 import userSchema, {
-  IModelUser
-} from '@shared-infra/persistence/mongo/models/user';
+  IUserModel
+} from '@shared-infra/persistence/mongo/models/user.model';
 import { IUserRepository } from '@user-module/domain/repository/iuser.repository.interaface';
 import { BaseRepository } from '@shared-infra/persistence/mongo/BaseRepository';
 
 @injectable()
 export class UserRepository
-  extends BaseRepository<IModelUser>
+  extends BaseRepository<IUserModel>
   implements IUserRepository
 {
   constructor() {

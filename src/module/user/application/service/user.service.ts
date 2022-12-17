@@ -3,11 +3,10 @@ import TYPES from '@ioc/constant/types';
 import { AppError } from '@core/error/AppError';
 import { Either, left, Result, right } from '@core/result/result';
 import { UserMap } from '@user-module/mapper/user.mapper';
-import { IUser } from '@user-module/domain/model/IUser';
+import { IUser } from '@user-module/domain/entity/IUser';
 import { IUserRepository } from '@user-module/domain/repository/iuser.repository.interaface';
 import { UserErrors } from '../user-errors/user.error';
 import { UserDTO } from '../dtos/UserDTO';
-import { User } from '@user-module/domain/model/User';
 
 type UserResponse = Either<
   AppError.UnexpectedError | Result<UserDTO>,
