@@ -1,21 +1,20 @@
 import { AppError } from '@core/error/AppError';
 import { left } from '@core/result/result';
-import { UserErrors } from '@user-module/application/user-errors/user.error';
 import { injectable, unmanaged } from 'inversify';
 import { Model, model, Schema, UpdateQuery } from 'mongoose';
 import { IBaseRepository } from './IBaseRepository';
 
 @injectable()
-export abstract class BaseRepository<EntityType>
-  implements IBaseRepository<EntityType>
+export abstract class BaseRepository<IModelEntity>
+  implements IBaseRepository<IModelEntity>
 {
-  private model: Model<EntityType>;
+  private model: Model<IModelEntity>;
 
   constructor(@unmanaged() modelName: string, @unmanaged() schema: Schema) {
-    this.model = model<EntityType>(modelName, schema);
+    this.model = model<IModelEntity>(modelName, schema);
   }
 
-  async create(entity: EntityType): Promise<any> {
+  async create(entity: IModelEntity): Promise<any> {
     try {
       const dataToSave = new this.model(entity);
       const result = await dataToSave.save();
@@ -29,7 +28,6 @@ export abstract class BaseRepository<EntityType>
     const result = await this.model.findOneAndUpdate({ _id }, entity, {
       new: true
     });
-    console.log(result);
     return Promise.resolve(result);
   }
 }

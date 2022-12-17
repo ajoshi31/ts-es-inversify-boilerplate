@@ -1,13 +1,18 @@
-import { AppError } from '@core/error/AppError';
-import { left, Result, right } from '@core/result/result';
+import { inject, injectable } from 'inversify';
 import TYPES from '@ioc/constant/types';
-import { UserDTO } from '@user-module/application/dtos/UserDto';
+import { AppError } from '@core/error/AppError';
+import { Either, left, Result, right } from '@core/result/result';
 import { UserMap } from '@user-module/mapper/user.mapper';
 import { IUser } from '@user-module/domain/model/IUser';
 import { IUserRepository } from '@user-module/domain/repository/iuser.repository.interaface';
-import { inject, injectable } from 'inversify';
 import { UserErrors } from '../user-errors/user.error';
-import { UserResponseDTO } from '../dtos/UserResponseDTO';
+import { UserDTO } from '../dtos/UserDTO';
+import { User } from '@user-module/domain/model/User';
+
+type UserResponse = Either<
+  AppError.UnexpectedError | Result<UserDTO>,
+  Result<void>
+>;
 
 @injectable()
 export class UserService {
@@ -16,14 +21,18 @@ export class UserService {
     private readonly _userRepository: IUserRepository
   ) {}
 
-  public async createUser(user: UserDTO): Promise<UserResponseDTO> {
-    const newUser: IUser = UserMap.fromDTOToModel(user);
+  public async createUser(userDto: UserDTO): Promise<UserResponse> {
     let result: any;
+    const userEntity = UserMap.fromDTOToDomain(userDto); // Checking with domain is happening in the mapper directly
+
+    /* This part can't work if we have base implementation in repo pattern else this map happens in the repository */
+    const userModelEntity = UserMap.fromDomainToPersistence(userEntity);
+
     try {
       try {
-        result = await this._userRepository.create(newUser);
+        result = await this._userRepository.create(userModelEntity);
       } catch (err) {
-        return left(new UserErrors.UserNotCreatedError(newUser));
+        return left(new UserErrors.UserNotCreatedError(userEntity));
       }
       return right(Result.ok<any>(result));
     } catch (err) {

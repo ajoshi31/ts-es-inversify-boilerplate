@@ -5,6 +5,7 @@ import TYPES from '@ioc/constant/types';
 import { BaseController } from '@shared-infra/http/controller/BaseController';
 import { UserService } from '@user-module/application/service/user.service';
 import { AppError } from '@core/error/AppError';
+import { UserDTO } from '@user-module/application/dtos/UserDTO';
 
 @injectable()
 export class CreateUserController extends BaseController {
@@ -13,8 +14,18 @@ export class CreateUserController extends BaseController {
     super();
   }
   public async executeImpl(request: Request, response: Response): Promise<any> {
+    // TODO : 1
+    /*
+     Check if we can find any case where request can cause issue as 
+     we have already checked the validation class conversion in middleware, 
+     if no issue can be found we can remove this this
+    */
+    const dto: UserDTO = {
+      email: request.body.email,
+      name: request.body.name
+    };
     try {
-      const result = await this.userService.createUser(request.body);
+      const result = await this.userService.createUser(dto);
       if (result.isLeft()) {
         const error: any = result.value;
         switch (error.constructor) {

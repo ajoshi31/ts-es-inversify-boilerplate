@@ -10,7 +10,7 @@ export class UserDTO {
     description: 'userId'
   })
   @Length(10, 20)
-  _id!: string;
+  _id?: string;
 
   @ApiModelProperty({
     description: 'username',
