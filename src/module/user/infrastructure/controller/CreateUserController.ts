@@ -1,10 +1,9 @@
 import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
-
 import TYPES from '@ioc/constant/types';
 import { BaseController } from '@shared-infra/http/controller/BaseController';
-import { UserService } from '@user-module/application/service/UserService';
 import { AppError } from '@core/error/AppError';
+import { UserService } from '@user-module/application/service/UserService';
 import { UserDTO } from '@user-module/application/dtos/UserDto';
 
 @injectable()

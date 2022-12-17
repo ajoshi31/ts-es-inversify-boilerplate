@@ -1,10 +1,10 @@
+import { Request, Response } from 'express';
+import { inject } from 'inversify';
+import { controller, httpPost, httpPut } from 'inversify-express-utils';
+import { ApiOperationPost, ApiPath } from 'swagger-express-ts';
 import TYPES from '@ioc/constant/types';
 import DtoRouteValidationMiddleware from '@shared-infra/http/middleware/DtoRouteValidationMiddleware';
 import { UserDTO } from '@user-module/application/dtos/UserDto';
-import { Request, Response } from 'express';
-import { inject, injectable } from 'inversify';
-import { controller, httpPost, httpPut } from 'inversify-express-utils';
-import { ApiOperationPost, ApiPath } from 'swagger-express-ts';
 import { CreateUserController } from '../controller/CreateUserController';
 import { UpdateUserController } from '../controller/UpdateUserController';
 

@@ -1,7 +1,7 @@
 import * as express from 'express';
 import { injectable } from 'inversify';
-import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 import { interfaces } from 'inversify-express-utils';
+import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 import { logger } from '@core/logger/Logger';
 
 @injectable()

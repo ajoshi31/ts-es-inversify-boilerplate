@@ -1,6 +1,6 @@
 import express from 'express';
-import { logger } from '@core/logger/Logger';
 import morgan from 'morgan';
+import { logger } from '@core/logger/Logger';
 
 const winstonStream = {
   write: (message: string) => {

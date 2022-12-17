@@ -1,10 +1,9 @@
 import 'module-alias/register';
 import 'reflect-metadata';
-
 import * as dotenv from 'dotenv';
+import { InversifyExpressServer } from 'inversify-express-utils';
 
 import { InversifyConfigContainer } from '@ioc/ioc-config';
-import { InversifyExpressServer } from 'inversify-express-utils';
 import Middleware from '@shared-infra/http/middleware/Index';
 import { MongoDbConnection } from '@shared-infra/persistence/mongo/Database';
 import { logger } from '@core/logger/Logger';

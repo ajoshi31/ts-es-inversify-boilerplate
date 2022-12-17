@@ -1,7 +1,7 @@
-import { AppError } from '@core/error/AppError';
-import { left } from '@core/result/Result';
 import { injectable, unmanaged } from 'inversify';
 import { Model, model, Schema, UpdateQuery } from 'mongoose';
+import { AppError } from '@core/error/AppError';
+import { left } from '@core/result/Result';
 import { IBaseRepository } from './IBaseRepository';
 
 @injectable()

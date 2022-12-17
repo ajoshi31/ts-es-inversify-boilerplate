@@ -1,5 +1,5 @@
-import ILogger from '@core/logger/ILogger';
 import { Logger } from 'winston';
+import ILogger from '@core/logger/ILogger';
 
 import { WinstonLogger } from './Winston';
 
