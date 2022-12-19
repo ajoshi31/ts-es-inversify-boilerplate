@@ -2,7 +2,10 @@ import bodyParser from 'body-parser';
 import express from 'express';
 
 const basicMiddleware = (app: express.Application) => {
+  app.enable('trust proxy');
+  app.use(express.json());
   app.use(bodyParser.json({ limit: '50mb' }));
+  app.set('etag', false);
   app.use(
     bodyParser.urlencoded({
       limit: '50mb',
@@ -15,7 +18,6 @@ const basicMiddleware = (app: express.Application) => {
       extended: true
     })
   );
-  app.use(express.json());
 
   return app;
 };

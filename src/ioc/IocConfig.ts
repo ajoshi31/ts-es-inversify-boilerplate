@@ -1,6 +1,6 @@
 import { Container } from 'inversify';
 import TYPES from './constant/types';
-import '../module/user/routers/user.router';
+import '../module/user/infrastructure/routers/UserRouter';
 import { UserService } from '@user-module/application/service/UserService';
 import { logger } from '@core/logger/Logger';
 import { UserRepository } from '@user-module/infrastructure/repository-implementation/UserRepository';
