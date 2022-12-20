@@ -10,8 +10,18 @@ const basicMiddleware = (app: express.Application) => {
   app.set('etag', false);
   app.use(bodyParser.json({ limit: '50mb' }));
   app.set('etag', false);
-  app.use(cors());
-  app.use(helmet());
+  app.use(
+    helmet({
+      contentSecurityPolicy: false
+    })
+  );
+  app.use(
+    cors({
+      origin: '*',
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+      allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept'
+    })
+  );
   app.use(compression());
   app.use(
     bodyParser.urlencoded({
