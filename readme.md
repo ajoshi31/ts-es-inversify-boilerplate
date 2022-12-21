@@ -35,3 +35,5 @@
 - [ ] Validation and separate DTO for request and response
 - [ ] proper naming for files and folders
 - [ ] Detailer error logging
+
+
