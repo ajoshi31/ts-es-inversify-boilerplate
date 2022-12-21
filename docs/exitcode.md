@@ -16,3 +16,13 @@ Exit Code 12 When you chose the wrong port number within the process.
 Exit Code 13 It is useful when await is outside the function in the top-level code, but the passed Promise was never resolved.
 
 > 128 Used for fatal signals such as SIGKILL or SIGHU.P
+
+Name Number Handleable Signal Purpose
+SIGHUP 1 Yes To close the parent terminal.
+SIGINT 2 Yes To interrupt a terminal, à la Ctrl + C
+SIGQUIT 3 Yes To make the terminal quit, à la Ctrl + D
+SIGKILL 9 No To forceful kill the process
+SIGUSR1 10 Yes User-defined signal 1
+SIGUSR2 12 Yes User-defined signal 2
+SIGTERM 12 Yes Represents a smooth process termination
+SIGSTOP 19 No

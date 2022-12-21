@@ -36,4 +36,8 @@
 - [ ] proper naming for files and folders
 - [ ] Detailer error logging
 
+### For error handling for unexpcted errors
 
+@godaddy/terminus
+stoppable
+http-graceful-shutdown

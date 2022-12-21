@@ -12,10 +12,6 @@ export namespace AppError {
       logger.info(`[AppError]: An unexpected error occurred`);
       logger.error(err);
     }
-
-    public static create(err: UnexpectedError): UnexpectedError {
-      return new UnexpectedError(err);
-    }
   }
 
   export class DatabaseError extends Result<UseCaseError> {
@@ -26,10 +22,6 @@ export namespace AppError {
       } as UseCaseError);
       logger.error(`[Database Error]: A database error occurred`);
       logger.error(err);
-    }
-
-    public static create(err: DatabaseError): DatabaseError {
-      return new DatabaseError(err);
     }
   }
 }

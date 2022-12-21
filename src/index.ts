@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import * as dotenv from 'dotenv';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import { InversifyConfigContainer } from '@ioc/IocConfig';
-import Middleware from '@shared-infra/http/middleware/Index';
+import Middleware from '@shared-infra/http/middleware/index';
 import { MongoDbConnection } from '@shared-infra/persistence/mongo/Database';
 import { logger } from '@core/logger/Logger';
 dotenv.config();
@@ -33,6 +33,14 @@ const expressApp = (async (): Promise<void> => {
     .catch((error) => {
       logger.error(error);
     });
+
+  process.on('unhandledRejection', (reason: Error, promise: Promise<any>) => {
+    throw reason;
+  });
+
+  process.on('uncaughtException', (error: Error) => {
+    console.log(error);
+  });
 })();
 
 expressApp;
