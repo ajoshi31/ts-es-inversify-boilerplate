@@ -1,6 +1,6 @@
 import auth from 'http-auth';
 import express from 'express';
-import monitorOptions from './status-config';
+import monitorOptions from './StatusConfig';
 /* eslint-disable */
 const statusMonitor = require('express-status-monitor')(monitorOptions);
 /* eslint-enable */

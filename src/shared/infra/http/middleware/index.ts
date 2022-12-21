@@ -1,7 +1,7 @@
 import express from 'express';
 
-import basicMiddleware from './global/basic';
-import statusMonitorMiddleware from './global/status-monitor/status-monitor';
+import basicMiddleware from './global/Basic';
+import statusMonitorMiddleware from './global/status-monitor/StatusMonitor';
 import swaggerMiddleware from './global/Swagger';
 import morganMiddleware from './global/Morgan';
 
