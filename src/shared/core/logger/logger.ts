@@ -1,6 +1,7 @@
 import { winstonLoggerInstance } from '@shared-infra/logger/WinstonLoggerImpl';
 import ILogger from './ILogger';
 
+// File name
 class AppLogger {
   logger: ILogger;
   constructor(logger: ILogger) {
