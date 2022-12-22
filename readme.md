@@ -9,7 +9,6 @@
 - [x] Make debugger and docker debugger in vscode
 - [ ] Make jest testing module setup
 - [ ] Make Auth Module separate
-- [ ] Make Search Module
 - [x] Status Monitor: express-status-monitor
 - [x] Class Validator
 - [ ] E2E API Testing SuperTest
@@ -21,20 +20,20 @@
 - [ ] Nodejs Event Dispatcher and Subscribers
 - [x] Repositories and Service Class
 - [x] Ports and Interfaces
-- [ ] Repository pattern for basic crud operations -> Base repo interface
+- [x] Repository pattern for basic crud operations -> Base repo interface
 - [ ] Basic service repo for crud operations
-- [ ] docsify or storybook
+- [ ] docsify
 - [ ] Rate Limiter
-- [ ] Util Classes for basic functionality
-- [ ] TypeGoose
+- [x] Util Classes for basic functionality
 
 ### Clean Up Task:
 
 - [ ] Swagger Options with user id and auth token as separate configuration file
 - [ ] Complete swagger documentation for all routes
-- [ ] Validation and separate DTO for request and response
-- [ ] proper naming for files and folders
-- [ ] Detailer error logging
+- [x] Validation and separate DTO for request and response
+- [x] proper naming for files and folders
+- [x] Detailer error logging
+- [ ] TypeGoose
 
 ### For error handling for unexpcted errors
 
