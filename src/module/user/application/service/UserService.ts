@@ -1,5 +1,5 @@
 import { inject, injectable } from 'inversify';
-import TYPES from '@ioc/constant/types';
+import TYPES from '@ioc/constant/Types';
 import { AppError } from '@core/error/AppError';
 import { Either, left, Result, right } from '@core/result/Result';
 import { UserMap } from '@user-module/mapper/UserMapper';

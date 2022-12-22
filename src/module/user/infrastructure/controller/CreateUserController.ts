@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
-import TYPES from '@ioc/constant/types';
+import TYPES from '@ioc/constant/Types';
 import { BaseController } from '@shared-infra/http/controller/BaseController';
 import { AppError } from '@core/error/AppError';
 import { UserService } from '@user-module/application/service/UserService';
