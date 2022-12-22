@@ -37,7 +37,7 @@ const expressApp = (async (): Promise<void> => {
     });
 
   server.setErrorConfig(errorMiddleware);
-  
+
   process.on('unhandledRejection', (reason: Error, promise: Promise<any>) => {
     throw reason;
   });
