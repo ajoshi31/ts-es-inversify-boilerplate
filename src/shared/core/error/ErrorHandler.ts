@@ -7,8 +7,6 @@ class ErrorHandler {
       'Error message from the centralized error-handling component',
       err
     );
-    // await sendMailToAdminIfCritical();
-    // await sendEventsToSentry();
   }
 
   public isTrustedError(error: Error) {

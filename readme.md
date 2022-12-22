@@ -40,4 +40,8 @@
 
 @godaddy/terminus
 stoppable
-http-graceful-shutdown
+http-graceful-shutdow
+
+Todo:
+1: Operationall and Programmer Error
+2: Exit handler
