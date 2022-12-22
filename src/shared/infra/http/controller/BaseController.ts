@@ -8,15 +8,20 @@ import { logger } from '@core/logger/Logger';
 export abstract class BaseController {
   protected abstract executeImpl(
     req: express.Request,
-    res: express.Response
+    res: express.Response,
+    next: express.NextFunction
   ): Promise<interfaces.IHttpActionResult>;
 
-  public async execute(req: express.Request, res: express.Response) {
+  public async execute(
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction
+  ) {
     try {
-      await this.executeImpl(req, res);
+      await this.executeImpl(req, res, next);
     } catch (err) {
       logger.error(`[BaseController]: Uncaught controller error`, err);
-      this.fail(res, 'An unexpected error occurred');
+      this.fail(res, 'An unexpected error occurred', next);
     }
   }
 
@@ -102,10 +107,15 @@ export abstract class BaseController {
     return BaseController.jsonResponse(res, 400, 'TODO');
   }
 
-  public fail(res: express.Response, error: Error | string | any) {
-    logger.error('Error: ', error.valueOf());
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-      message: error.valueOf()
+  public async fail(
+    res: express.Response,
+    error: Error | string | any,
+    next: express.NextFunction
+  ) {
+    await next({
+      status: StatusCodes.INTERNAL_SERVER_ERROR,
+      message: error.errorValue(),
+      err: error
     });
   }
 }

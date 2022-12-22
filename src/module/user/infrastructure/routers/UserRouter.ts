@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { inject } from 'inversify';
 import { controller, httpPost, httpPut } from 'inversify-express-utils';
 import { ApiOperationPost, ApiPath } from 'swagger-express-ts';
@@ -34,12 +34,20 @@ export abstract class UserRouters {
     }
   })
   @httpPost('/', DtoRouteValidationMiddleware(UserDTO))
-  public async createUser(request: Request, response: Response): Promise<any> {
-    return this._createUserController.execute(request, response);
+  public async createUser(
+    request: Request,
+    response: Response,
+    next: NextFunction
+  ): Promise<any> {
+    return this._createUserController.execute(request, response, next);
   }
 
   @httpPut('/:id')
-  public async updateUser(request: Request, response: Response): Promise<any> {
-    return this._updateUserController.execute(request, response);
+  public async updateUser(
+    request: Request,
+    response: Response,
+    next: NextFunction
+  ): Promise<any> {
+    return this._updateUserController.execute(request, response, next);
   }
 }

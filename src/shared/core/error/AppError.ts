@@ -9,8 +9,6 @@ export namespace AppError {
         message: `An unexpected error occurred.`,
         error: err
       } as UseCaseError);
-      logger.info(`[AppError]: An unexpected error occurred`);
-      logger.error(err);
     }
   }
 
@@ -20,8 +18,6 @@ export namespace AppError {
         message: `A database error occurred.`,
         error: err
       } as UseCaseError);
-      logger.error(`[Database Error]: A database error occurred`);
-      logger.error(err);
     }
   }
 }

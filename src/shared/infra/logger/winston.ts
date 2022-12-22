@@ -49,14 +49,14 @@ export class WinstonLogger {
     return this.logger;
   }
 
-  errorStackFormat = format((info) => {
-    if (info instanceof Error) {
-      return Object.assign({}, info, {
-        stack: info.stack,
-        message: info.message
+  errorStackFormat = format((error) => {
+    if (error instanceof Error) {
+      return Object.assign({}, error, {
+        stack: error.stack,
+        message: error.message
       });
     }
-    return info;
+    return error;
   });
 
   myFormat = printf(({ level, message, timestamp, ...metadata }) => {

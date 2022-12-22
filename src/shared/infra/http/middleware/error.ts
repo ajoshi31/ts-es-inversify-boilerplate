@@ -1,16 +1,21 @@
 import { errorHandler } from '@core/error/ErrorHandler';
 import express from 'express';
 import { NextFunction, Request, Response } from 'express';
+import { BaseController } from '../controller/BaseController';
 
 const errorMiddleware = function (app: express.Application) {
   app.use(
-    async (err: Error, req: Request, res: Response, next: NextFunction) => {
-      if (!errorHandler.isTrustedError(err)) {
-        // it is serious
-        // res.json({ success: false, message: err.message, error: err });
-        next(err);
+    async (errObj: any, req: Request, res: Response, next: NextFunction) => {
+      const errorPass: Error = new Error(errObj.err.errorValue().error);
+      await errorHandler.handleError(errorPass);
+      const errorStatus = await errorHandler.isTrustedError(errObj);
+      if (!errorStatus) {
+        return BaseController.jsonResponse(
+          res,
+          errObj.status,
+          errObj.err.errorValue().message
+        );
       }
-      await errorHandler.handleError(err);
     }
   );
 };

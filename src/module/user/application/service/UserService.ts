@@ -7,6 +7,7 @@ import { IUser } from '@user-module/domain/entity/IUser';
 import { IUserRepository } from '@user-module/domain/repository/IUserRepository';
 import { UserErrors } from '../errors/UserError';
 import { UserDTO } from '../dtos/UserDto';
+import { logger } from '@core/logger/Logger';
 
 type UserResponse = Either<AppError.UnexpectedError, Result<UserDTO>>;
 
@@ -25,14 +26,13 @@ export class UserService {
     const userModelEntity = UserMap.fromDomainToPersistence(userEntity);
 
     try {
-      throw new Error('This is sme error');
       try {
         result = await this._userRepository.create(userModelEntity);
       } catch (err) {
         return left(new UserErrors.UserNotCreatedError(userEntity));
       }
       return right(Result.ok<UserDTO>(result));
-    } catch (err) {
+    } catch (err: any) {
       return left(new AppError.UnexpectedError(err));
     }
   }

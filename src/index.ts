@@ -6,6 +6,7 @@ import { InversifyConfigContainer } from '@ioc/IocConfig';
 import Middleware from '@shared-infra/http/middleware/index';
 import { MongoDbConnection } from '@shared-infra/persistence/mongo/Database';
 import { logger } from '@core/logger/Logger';
+import errorMiddleware from '@shared-infra/http/middleware/error';
 dotenv.config();
 const port = process.env.PORT;
 
@@ -34,6 +35,7 @@ const expressApp = (async (): Promise<void> => {
       logger.error(error);
     });
 
+  server.setErrorConfig(errorMiddleware);
   process.on('unhandledRejection', (reason: Error, promise: Promise<any>) => {
     throw reason;
   });
