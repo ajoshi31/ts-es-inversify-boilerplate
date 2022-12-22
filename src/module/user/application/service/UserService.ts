@@ -37,6 +37,8 @@ export class UserService {
     }
   }
 
+  ///
+
   public async updateUser(id: string, user: IUser) {
     try {
       const result = await this._userRepository.update(id, user);
