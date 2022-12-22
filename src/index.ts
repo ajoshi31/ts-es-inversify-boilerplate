@@ -5,7 +5,7 @@ import { InversifyExpressServer } from 'inversify-express-utils';
 import { InversifyConfigContainer } from '@ioc/IocConfig';
 import Middleware from '@shared-infra/http/middleware/index';
 import { MongoDbConnection } from '@shared-infra/persistence/mongo/Database';
-import { logger } from '@core/logger/LoggerV1';
+import { logger } from '@core/logger/Logger';
 import errorMiddleware from '@shared-infra/http/middleware/error';
 import { errorHandler } from '@core/error/ErrorHandler';
 import terminate from '@core/error/Terminate';

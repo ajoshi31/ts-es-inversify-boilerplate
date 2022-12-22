@@ -7,7 +7,7 @@ import { IUser } from '@user-module/domain/entity/IUser';
 import { IUserRepository } from '@user-module/domain/repository/IUserRepository';
 import { UserErrors } from '../errors/UserError';
 import { UserDTO } from '../dtos/UserDto';
-import { logger } from '@core/logger/LoggerV1';
+import { logger } from '@core/logger/Logger';
 
 type UserResponse = Either<AppError.UnexpectedError, Result<UserDTO>>;
 

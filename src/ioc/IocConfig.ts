@@ -2,7 +2,7 @@ import { Container } from 'inversify';
 import TYPES from './constant/types';
 import '../module/user/infrastructure/routers/UserRouter';
 import { UserService } from '@user-module/application/service/UserService';
-import { logger } from '@core/logger/LoggerV1';
+import { logger } from '@core/logger/Logger';
 import { UserRepository } from '@user-module/infrastructure/repository-implementation/UserRepository';
 import { IUserRepository } from '@user-module/domain/repository/IUserRepository';
 import { CreateUserController } from '@user-module/infrastructure/controller/CreateUserController';
