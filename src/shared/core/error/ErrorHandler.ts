@@ -1,5 +1,6 @@
 import { logger } from '@core/logger/Logger';
-import { UseCaseError } from './UseCaseError';
+import { AppError } from './AppError';
+import { BaseError } from './BaseError';
 
 class ErrorHandler {
   public async handleError(err: Error): Promise<void> {
@@ -8,10 +9,9 @@ class ErrorHandler {
       err
     );
   }
-
-  public isTrustedError(error: Error) {
-    if (error instanceof UseCaseError) {
-      //   return error.isOperationalError;
+  public isTrustedError(error: any) {
+    if (error instanceof BaseError) {
+      return error.errorValue().isOperational;
     }
     return false;
   }

@@ -1,5 +1,5 @@
-import { logger } from '@core/logger/Logger';
 import { Result } from '@core/result/Result';
+import { BaseError } from './BaseError';
 import { UseCaseError } from './UseCaseError';
 
 export namespace AppError {
@@ -7,17 +7,15 @@ export namespace AppError {
     public constructor(err: any) {
       super(false, {
         message: `An unexpected error occurred.`,
-        error: err
+        error: err,
+        isOperational: false
       } as UseCaseError);
     }
   }
 
-  export class DatabaseError extends Result<UseCaseError> {
+  export class DatabaseError extends BaseError {
     public constructor(err: any) {
-      super(false, {
-        message: `A database error occurred.`,
-        error: err
-      } as UseCaseError);
+      super(err, 'A data base error occoured', true);
     }
   }
 }

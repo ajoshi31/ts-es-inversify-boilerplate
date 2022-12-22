@@ -26,6 +26,7 @@ export class UserService {
     const userModelEntity = UserMap.fromDomainToPersistence(userEntity);
 
     try {
+      throw new Error('This is sme error');
       try {
         result = await this._userRepository.create(userModelEntity);
       } catch (err) {

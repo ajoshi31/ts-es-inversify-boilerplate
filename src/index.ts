@@ -7,6 +7,7 @@ import Middleware from '@shared-infra/http/middleware/index';
 import { MongoDbConnection } from '@shared-infra/persistence/mongo/Database';
 import { logger } from '@core/logger/Logger';
 import errorMiddleware from '@shared-infra/http/middleware/error';
+import { errorHandler } from '@core/error/ErrorHandler';
 dotenv.config();
 const port = process.env.PORT;
 
@@ -36,12 +37,16 @@ const expressApp = (async (): Promise<void> => {
     });
 
   server.setErrorConfig(errorMiddleware);
+  
   process.on('unhandledRejection', (reason: Error, promise: Promise<any>) => {
     throw reason;
   });
 
   process.on('uncaughtException', (error: Error) => {
-    console.log(error);
+    errorHandler.handleError(error);
+    if (!errorHandler.isTrustedError(error)) {
+      process.exit(1);
+    }
   });
 })();
 
