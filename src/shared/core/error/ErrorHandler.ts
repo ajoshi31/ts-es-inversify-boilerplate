@@ -1,4 +1,4 @@
-import { logger } from '@core/logger/Logger';
+import { logger } from '@core/logger/LoggerV1';
 import { AppError } from './AppError';
 import { BaseError } from './BaseError';
 
