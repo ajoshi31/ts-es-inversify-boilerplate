@@ -30,7 +30,7 @@ export class UserService {
       try {
         result = await this._userRepository.create(userModelEntity);
       } catch (err) {
-        return left(new UserErrors.UserNotCreatedError(userEntity));
+        return left(new UserErrors.UserNotCreatedError(err, userEntity));
       }
       return right(Result.ok<UserDTO>(result));
     } catch (err: any) {
