@@ -12,7 +12,7 @@
     "start": "npm run build && node build/index.js",
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix",
-    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "prettier-format": "prettier --config .prettierrc src/**/*.ts --write",
     "prettier-watch": "onchange 'src/**/*.ts' -- prettier --write {{changed}}"
   },
   "husky": {
