@@ -19,13 +19,11 @@ export class UserService {
   ) {}
 
   public async createUser(userDto: UserDTO): Promise<UserResponse> {
-    let result: any;
-    const userEntity = UserMap.fromDTOToDomain(userDto); // Checking with domain is happening in the mapper directly
-
-    /* This part can't work if we have base implementation in repo pattern else this map can be done in the repository */
-    const userModelEntity = UserMap.fromDomainToPersistence(userEntity);
-
     try {
+      let result: any;
+      const userEntity = UserMap.fromDTOToDomain(userDto); // Checking with domain is happening in the mapper directly
+      /* This part can't work if we have base implementation in repo pattern else this map can be done in the repository */
+      const userModelEntity = UserMap.fromDomainToPersistence(userEntity);
       try {
         result = await this._userRepository.create(userModelEntity);
       } catch (err: any) {

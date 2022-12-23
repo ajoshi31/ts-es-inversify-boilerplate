@@ -1,5 +1,5 @@
 import { Container } from 'inversify';
-import TYPES from './constant/Types';
+
 import '../module/user/infrastructure/routers/UserRouter';
 import { UserService } from '@user-module/application/service/UserService';
 import { logger } from '@core/logger/Logger';
@@ -7,6 +7,7 @@ import { UserRepository } from '@user-module/infrastructure/repository-implement
 import { IUserRepository } from '@user-module/domain/repository/IUserRepository';
 import { CreateUserController } from '@user-module/infrastructure/controller/CreateUserController';
 import { UpdateUserController } from '@user-module/infrastructure/controller/UpdateUserController';
+import TYPES from './constant/Types';
 
 const InversifyConfigContainer = async () => {
   const container = new Container();

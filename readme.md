@@ -34,6 +34,7 @@
 - [x] proper naming for files and folders
 - [x] Detailer error logging
 - [ ] TypeGoose
+- [ ] easy-abtest
 
 ### For error handling for unexpcted errors
 
