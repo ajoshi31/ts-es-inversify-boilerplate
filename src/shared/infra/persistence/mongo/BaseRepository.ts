@@ -17,8 +17,8 @@ export abstract class BaseRepository<IModelEntity>
   async create(entity: IModelEntity): Promise<any> {
     try {
       const dataToSave = new this.model(entity);
-      const result = await dataToSave.save();
-      return Promise.resolve(result);
+      await dataToSave.save();
+      return Promise.resolve();
     } catch (err: unknown) {
       return left(new AppError.DatabaseError(err));
     }
