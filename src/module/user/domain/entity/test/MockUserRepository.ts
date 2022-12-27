@@ -1,3 +1,4 @@
+import { IUserModel } from '@shared-infra/persistence/mongo/models/UserModel';
 import { UserDTO } from '../../../application/dtos/UserDto';
 
 export class MockUserRepository {
@@ -27,7 +28,7 @@ export class MockUserRepository {
         name: this.name,
         email: this.email
       });
-    } catch (err: any) {
+    } catch (err) {
       return Promise.reject({ err: 'user not created' });
     }
   }

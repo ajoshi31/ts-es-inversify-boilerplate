@@ -1,4 +1,3 @@
-import { UserService } from './../UserService';
 import { MockUserRepository } from '../../../domain/entity/test/MockUserRepository';
 
 describe('Tests for user', () => {
