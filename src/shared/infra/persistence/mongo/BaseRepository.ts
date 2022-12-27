@@ -19,7 +19,7 @@ export abstract class BaseRepository<IModelEntity>
       const dataToSave = new this.model(entity);
       const result = await dataToSave.save();
       return Promise.resolve(result);
-    } catch (err: any) {
+    } catch (err: unknown) {
       return left(new AppError.DatabaseError(err));
     }
   }
