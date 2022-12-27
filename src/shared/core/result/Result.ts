@@ -1,3 +1,5 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 export class Result<T> {
   public isSuccess: boolean;
   public isFailure: boolean;
@@ -101,3 +103,5 @@ export const left = <L, A>(l: L): Either<L, A> => {
 export const right = <L, A>(a: A): Either<L, A> => {
   return new Right<L, A>(a);
 };
+
+/* eslint-enable  @typescript-eslint/no-explicit-any */

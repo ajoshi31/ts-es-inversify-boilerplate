@@ -8,7 +8,7 @@ class ErrorHandler {
       err
     );
   }
-  public isTrustedError(error: any) {
+  public isTrustedError(error: unknown) {
     if (error instanceof BaseError) {
       return error.errorValue().isOperational;
     }

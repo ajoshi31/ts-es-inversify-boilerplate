@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import { injectable, unmanaged } from 'inversify';
 import { Model, model, Schema, UpdateQuery } from 'mongoose';
 import { AppError } from '@core/error/AppError';

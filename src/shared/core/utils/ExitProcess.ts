@@ -1,6 +1,7 @@
 import terminate from '@core/error/Terminate';
+import { InversifyExpressServer } from 'inversify-express-utils';
 
-const ExitProcess = (server: any) => {
+const ExitProcess = (server: InversifyExpressServer) => {
   const exitHandler = terminate(server, {
     coredump: false,
     timeout: 500

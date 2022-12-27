@@ -14,7 +14,7 @@ const port = process.env.PORT;
 
 const expressApp = (async (): Promise<void> => {
   /* Setting up IoC */
-  const containerConfig: any = await InversifyConfigContainer();
+  const containerConfig = await InversifyConfigContainer();
   const server = new InversifyExpressServer(containerConfig, null, {
     rootPath: '/api/v1'
   });

@@ -38,7 +38,7 @@ export abstract class UserRouters {
     request: Request,
     response: Response,
     next: NextFunction
-  ): Promise<any> {
+  ) {
     return this._createUserController.execute(request, response, next);
   }
 
@@ -47,7 +47,7 @@ export abstract class UserRouters {
     request: Request,
     response: Response,
     next: NextFunction
-  ): Promise<any> {
+  ) {
     return this._updateUserController.execute(request, response, next);
   }
 }

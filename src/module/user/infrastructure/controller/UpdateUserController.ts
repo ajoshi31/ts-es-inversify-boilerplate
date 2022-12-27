@@ -7,8 +7,6 @@ import { UserDTO } from '@user-module/application/dtos/UserDto';
 
 @injectable()
 export class UpdateUserController extends BaseController {
-  final: any;
-
   constructor(@inject(TYPES.UserService) private userService: UserService) {
     super();
   }
@@ -20,7 +18,7 @@ export class UpdateUserController extends BaseController {
     );
 
     if (result.isRight()) {
-      return this.ok<any>(response, result.value);
+      return this.ok<UserDTO>(response);
     }
   }
 }

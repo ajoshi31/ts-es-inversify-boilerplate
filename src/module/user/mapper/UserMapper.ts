@@ -10,7 +10,7 @@ export class UserMap {
     });
   }
 
-  public static fromPersistenceToDTO(user: any): UserDTO {
+  public static fromPersistenceToDTO(user: IUserModel): UserDTO {
     return {
       _id: user?._id,
       name: user.name,

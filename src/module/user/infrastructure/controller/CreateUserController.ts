@@ -8,7 +8,6 @@ import { UserDTO } from '@user-module/application/dtos/UserDto';
 
 @injectable()
 export class CreateUserController extends BaseController {
-  user: any;
   constructor(@inject(TYPES.UserService) private userService: UserService) {
     super();
   }
@@ -30,6 +29,7 @@ export class CreateUserController extends BaseController {
     try {
       const result = await this.userService.createUser(dto);
       if (result.isLeft()) {
+        // eslint-disable-next-line  @typescript-eslint/no-explicit-any
         const error: any = result.value;
         switch (error.constructor) {
           case AppError.UnexpectedError:
@@ -39,7 +39,7 @@ export class CreateUserController extends BaseController {
         }
       } else {
         const userDetails = result.value.getValue();
-        return this.ok<any>(response, userDetails);
+        return this.ok<UserDTO>(response, userDetails);
       }
     } catch (err) {
       return this.fail(response, new AppError.UnexpectedError(err), next);

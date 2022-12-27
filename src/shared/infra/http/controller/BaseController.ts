@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import * as express from 'express';
 import { injectable } from 'inversify';
 import { interfaces } from 'inversify-express-utils';
@@ -161,3 +162,4 @@ export abstract class BaseController {
     });
   }
 }
+/* eslint-enable  @typescript-eslint/no-explicit-any */
