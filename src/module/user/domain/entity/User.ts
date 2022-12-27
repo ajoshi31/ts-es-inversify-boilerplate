@@ -5,7 +5,7 @@ export class User {
   private readonly name!: string;
   private readonly email!: string;
 
-  constructor(props: IUser) {
+  private constructor(props: IUser) {
     this.email = props.email;
     this.name = props.name;
   }
