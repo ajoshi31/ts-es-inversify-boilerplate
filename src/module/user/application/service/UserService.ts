@@ -25,16 +25,14 @@ export class UserService {
       const userModelEntity = UserMap.fromDomainToPersistence(userEntity);
       try {
         result = await this._userRepository.create(userModelEntity);
-      } catch (err: any) {
+      } catch (err) {
         return left(new UserErrors.UserNotCreatedError(err, userEntity));
       }
       return right(Result.ok<UserDTO>(result));
-    } catch (err: any) {
+    } catch (err) {
       return left(new AppError.UnexpectedError(err));
     }
   }
-
-  ///
 
   public async updateUser(id: string, user: IUser) {
     try {

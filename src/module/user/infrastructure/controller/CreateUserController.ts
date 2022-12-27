@@ -41,8 +41,8 @@ export class CreateUserController extends BaseController {
         const userDetails = result.value.getValue();
         return this.ok<any>(response, userDetails);
       }
-    } catch (err: any) {
-      return this.tooMany(response, new AppError.DatabaseError(err), next);
+    } catch (err) {
+      return this.fail(response, new AppError.UnexpectedError(err), next);
     }
   }
 }

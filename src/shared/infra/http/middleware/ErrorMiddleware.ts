@@ -1,6 +1,6 @@
 import { errorHandler } from '@core/error/ErrorHandler';
 import express from 'express';
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { BaseController } from '../controller/BaseController';
 
 const errorMiddleware = function (app: express.Application) {
