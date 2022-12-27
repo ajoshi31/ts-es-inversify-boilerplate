@@ -30,6 +30,7 @@ export class CreateUserController extends BaseController {
     };
     try {
       const result = await this.userService.createUser(dto);
+      throw new Error('too manay baba');
       if (result.isLeft()) {
         const error: any = result.value;
         switch (error.constructor) {
@@ -43,7 +44,9 @@ export class CreateUserController extends BaseController {
         return this.ok<any>(response, userDetails);
       }
     } catch (err: any) {
-      return this.fail(response, new AppError.UnexpectedError(err), next);
+      console.log('Asdasdasdasd asdasd');
+
+      return this.tooMany(response, new AppError.DatabaseError(err), next);
     }
   }
 }

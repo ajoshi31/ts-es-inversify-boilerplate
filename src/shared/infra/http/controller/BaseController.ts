@@ -47,60 +47,102 @@ export abstract class BaseController {
     return res.sendStatus(StatusCodes.CREATED);
   }
 
-  public clientError(res: express.Response, message?: string) {
-    return BaseController.jsonResponse(
-      res,
-      StatusCodes.BAD_REQUEST,
-      message ? message : ReasonPhrases.BAD_REQUEST
-    );
+  public async clientError(
+    res: express.Response,
+    error: Error | string | any,
+    next: express.NextFunction
+  ) {
+    await next({
+      status: StatusCodes.BAD_REQUEST,
+      message: error.errorValue().message
+        ? error.errorValue().message
+        : ReasonPhrases.BAD_REQUEST,
+      err: error
+    });
   }
 
-  public unauthorized(res: express.Response, message?: string) {
-    return BaseController.jsonResponse(
-      res,
-      StatusCodes.UNAUTHORIZED,
-      message ? message : ReasonPhrases.UNAUTHORIZED
-    );
+  public async unauthorized(
+    res: express.Response,
+    error: Error | string | any,
+    next: express.NextFunction
+  ) {
+    await next({
+      status: StatusCodes.UNAUTHORIZED,
+      message: error.errorValue().message
+        ? error.errorValue().message
+        : ReasonPhrases.UNAUTHORIZED,
+      err: error
+    });
   }
 
-  public paymentRequired(res: express.Response, message?: string) {
-    return BaseController.jsonResponse(
-      res,
-      StatusCodes.PAYMENT_REQUIRED,
-      message ? message : ReasonPhrases.PAYMENT_REQUIRED
-    );
+  public async paymentRequired(
+    res: express.Response,
+    error: Error | string | any,
+    next: express.NextFunction
+  ) {
+    await next({
+      status: StatusCodes.PAYMENT_REQUIRED,
+      message: error.errorValue().message
+        ? error.errorValue().message
+        : ReasonPhrases.PAYMENT_REQUIRED,
+      err: error
+    });
   }
 
-  public forbidden(res: express.Response, message?: string) {
-    return BaseController.jsonResponse(
-      res,
-      StatusCodes.FORBIDDEN,
-      message ? message : ReasonPhrases.FORBIDDEN
-    );
+  public async forbidden(
+    res: express.Response,
+    error: Error | string | any,
+    next: express.NextFunction
+  ) {
+    await next({
+      status: StatusCodes.FORBIDDEN,
+      message: error.errorValue().message
+        ? error.errorValue().message
+        : ReasonPhrases.FORBIDDEN,
+      err: error
+    });
   }
 
-  public notFound(res: express.Response, message?: string) {
-    return BaseController.jsonResponse(
-      res,
-      StatusCodes.NOT_FOUND,
-      message ? message : ReasonPhrases.NOT_FOUND
-    );
+  public async notFound(
+    res: express.Response,
+    error: Error | string | any,
+    next: express.NextFunction
+  ) {
+    await next({
+      status: StatusCodes.NOT_FOUND,
+      message: error.errorValue().message
+        ? error.errorValue().message
+        : ReasonPhrases.NOT_FOUND,
+      err: error
+    });
   }
 
-  public conflict(res: express.Response, message?: string) {
-    return BaseController.jsonResponse(
-      res,
-      StatusCodes.CONFLICT,
-      message ? message : ReasonPhrases.CONFLICT
-    );
+  public async conflict(
+    res: express.Response,
+    error: Error | string | any,
+    next: express.NextFunction
+  ) {
+    await next({
+      status: StatusCodes.CONFLICT,
+      message: error.errorValue().message
+        ? error.errorValue().message
+        : ReasonPhrases.CONFLICT,
+      err: error
+    });
   }
 
-  public tooMany(res: express.Response, message?: string) {
-    return BaseController.jsonResponse(
-      res,
-      StatusCodes.TOO_MANY_REQUESTS,
-      message ? message : ReasonPhrases.TOO_MANY_REQUESTS
-    );
+  public async tooMany(
+    res: express.Response,
+    error: Error | string | any,
+    next: express.NextFunction
+  ) {
+    await next({
+      status: StatusCodes.TOO_MANY_REQUESTS,
+      message: error.errorValue().message
+        ? error.errorValue().message
+        : ReasonPhrases.TOO_MANY_REQUESTS,
+      err: error
+    });
   }
 
   public todo(res: express.Response) {

@@ -11,11 +11,7 @@ const errorMiddleware = function (app: express.Application) {
         process.exit(1);
       }
 
-      return BaseController.jsonResponse(
-        res,
-        errObj.status,
-        errObj.err.errorValue().message
-      );
+      return BaseController.jsonResponse(res, errObj.status, errObj.message);
     }
   );
 };
