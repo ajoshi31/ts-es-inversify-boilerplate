@@ -13,6 +13,7 @@
     "no-console": 1,
     "prettier/prettier": 2,
     "@typescript-eslint/no-namespace": "off",
-    "@typescript-eslint/no-empty-interface": "off"
+    "@typescript-eslint/no-empty-interface": "off",
+    "allowExplicitAny": 0
   }
 }
