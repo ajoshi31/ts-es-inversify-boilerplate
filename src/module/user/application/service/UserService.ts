@@ -26,7 +26,9 @@ export class UserService {
       try {
         result = await this._userRepository.create(userModelEntity);
       } catch (err) {
-        return left(new UserErrors.UserNotCreatedError(err, userEntity));
+        return left(
+          new UserErrors.UserNotCreatedError(err as Error, userEntity)
+        );
       }
       return right(Result.ok<UserDTO>(result));
     } catch (err) {
@@ -39,7 +41,7 @@ export class UserService {
       const result = await this._userRepository.update(id, user);
       const userDTO = UserMap.fromPersistenceToDTO(result);
       return right(userDTO);
-    } catch (err: any) {
+    } catch (err) {
       return left(new AppError.UnexpectedError(err));
     }
   }
