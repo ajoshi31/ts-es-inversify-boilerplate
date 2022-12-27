@@ -7,8 +7,6 @@ import Middleware from '@shared-infra/http/middleware/index';
 import { MongoDbConnection } from '@shared-infra/persistence/mongo/Database';
 import { logger } from '@core/logger/Logger';
 import errorMiddleware from '@shared-infra/http/middleware/ErrorMiddleware';
-import { errorHandler } from '@core/error/ErrorHandler';
-import terminate from '@core/error/Terminate';
 import ExitProcess from '@core/utils/ExitProcess';
 
 dotenv.config();

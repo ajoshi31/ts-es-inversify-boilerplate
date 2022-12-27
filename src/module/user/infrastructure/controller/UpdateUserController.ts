@@ -3,11 +3,11 @@ import { inject, injectable } from 'inversify';
 import TYPES from '@ioc/constant/Types';
 import { BaseController } from '@shared-infra/http/controller/BaseController';
 import { UserService } from '@user-module/application/service/UserService';
+import { UserDTO } from '@user-module/application/dtos/UserDto';
 
 @injectable()
 export class UpdateUserController extends BaseController {
   final: any;
-  user: any;
 
   constructor(@inject(TYPES.UserService) private userService: UserService) {
     super();

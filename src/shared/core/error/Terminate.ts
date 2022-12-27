@@ -9,7 +9,7 @@ const terminate = (
     options.coredump ? process.abort() : process.exit(code);
   };
 
-  return (code: any, reason: any) => (err: Error, promise: Promise<void>) => {
+  return (code: any, reason: any) => (err: Error) => {
     if (err && err instanceof Error) {
       logger.error(reason);
 

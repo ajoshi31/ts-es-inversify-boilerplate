@@ -5,7 +5,6 @@ import { BaseController } from '@shared-infra/http/controller/BaseController';
 import { AppError } from '@core/error/AppError';
 import { UserService } from '@user-module/application/service/UserService';
 import { UserDTO } from '@user-module/application/dtos/UserDto';
-import { Left } from '@core/result/Result';
 
 @injectable()
 export class CreateUserController extends BaseController {
@@ -30,7 +29,6 @@ export class CreateUserController extends BaseController {
     };
     try {
       const result = await this.userService.createUser(dto);
-      throw new Error('too manay baba');
       if (result.isLeft()) {
         const error: any = result.value;
         switch (error.constructor) {
@@ -44,8 +42,6 @@ export class CreateUserController extends BaseController {
         return this.ok<any>(response, userDetails);
       }
     } catch (err: any) {
-      console.log('Asdasdasdasd asdasd');
-
       return this.tooMany(response, new AppError.DatabaseError(err), next);
     }
   }

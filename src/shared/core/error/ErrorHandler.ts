@@ -1,5 +1,4 @@
 import { logger } from '@core/logger/Logger';
-import { AppError } from './AppError';
 import { BaseError } from './BaseError';
 
 class ErrorHandler {
