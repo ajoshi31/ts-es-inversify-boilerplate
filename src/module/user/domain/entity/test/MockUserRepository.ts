@@ -1,22 +1,9 @@
-import { IUserModel } from '@shared-infra/persistence/mongo/models/UserModel';
 import { UserDTO } from '../../../application/dtos/UserDto';
 
 export class MockUserRepository {
   private _id!: string;
   private name!: string;
   private email!: string;
-
-  get getId(): string {
-    return this._id;
-  }
-
-  get getName(): string {
-    return this.name;
-  }
-
-  get getEmail(): string {
-    return this.email;
-  }
 
   public async createUser(userDto: UserDTO): Promise<any> {
     try {

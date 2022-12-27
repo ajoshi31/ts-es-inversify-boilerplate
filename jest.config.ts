@@ -13,5 +13,7 @@ module.exports = {
     '^@core(.*)$': '<rootDir>/src//shared/core$1',
     '^@shared-infra(.*)$': '<rootDir>/src//shared/infra$1',
     '^@ioc(.*)$': '<rootDir>/src//ioc$1'
-  }
+  },
+  collectCoverage: true,
+  coverageReporters: ['json', 'html']
 };
