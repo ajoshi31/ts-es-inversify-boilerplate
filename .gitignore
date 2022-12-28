@@ -5,4 +5,8 @@ build
 
 log/
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 25_testing_jest
 coverage/
