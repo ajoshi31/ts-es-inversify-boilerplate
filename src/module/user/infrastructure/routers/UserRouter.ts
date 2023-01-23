@@ -11,9 +11,10 @@ import TYPES from '@ioc/constant/Types';
 import DtoRouteValidationMiddleware from '@shared-infra/http/middleware/DtoRouteValidationMiddleware';
 import { UserDTO } from '@user-module/application/dtos/UserDto';
 import { CreateUserController } from '../controller/users/CreateUserController';
-import { UpdateUserController } from '../controller/UpdateUserController';
-import { GetUserController } from '../controller/GetUserController';
+
 import CheckAuthToken from '@shared-infra/http/middleware/CheckAuthToken';
+import { UpdateUserController } from '../controller/users/UpdateUserController';
+import { GetUserController } from '../controller/users/GetUserController';
 
 @ApiPath({
   name: 'Users',

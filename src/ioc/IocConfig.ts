@@ -2,15 +2,16 @@ import { Container } from 'inversify';
 
 import '../module/user/infrastructure/routers/UserRouter';
 import '../module/user/infrastructure/routers/AuthRoutes';
-import { UserService } from '@user-module/application/service/UserService';
+import { UserService } from '@user-module/application/usecase/UserService';
 import { UserRepository } from '@user-module/infrastructure/repository-implementation/UserRepository';
 import { IUserRepository } from '@user-module/domain/repository/IUserRepository';
 import { CreateUserController } from '@user-module/infrastructure/controller/users/CreateUserController';
-import { UpdateUserController } from '@user-module/infrastructure/controller/UpdateUserController';
+
 import TYPES from './constant/Types';
 import { errorHandler } from '@core/error/ErrorHandler';
 import { AuthController } from '../module/user/infrastructure/controller/auth/AuthController';
-import { GetUserController } from '@user-module/infrastructure/controller/GetUserController';
+import { UpdateUserController } from '@user-module/infrastructure/controller/users/UpdateUserController';
+import { GetUserController } from '@user-module/infrastructure/controller/users/GetUserController';
 
 const InversifyConfigContainer = async () => {
   const container = new Container();
