@@ -2,7 +2,7 @@ import TYPES from '@ioc/constant/Types';
 import { NextFunction, Request, Response } from 'express';
 import { inject } from 'inversify';
 import { controller, httpPost } from 'inversify-express-utils';
-import { AuthController } from '../controller/AuthController';
+import { AuthController } from '../controller/auth/AuthController';
 
 @controller('/auth')
 export abstract class AuthRouters {

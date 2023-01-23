@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
 import { injectable } from 'inversify';
 import { BaseController } from '@shared-infra/http/controller/BaseController';
-import { random } from '../../utils/random';
-import config from '../../config/config';
+import { random } from '../../../utils/random';
+import config from '../../../config/config';
 import * as jwt from 'jsonwebtoken';
-import { AuthErrors } from '../../application/errors/AuthError';
+import { AuthErrors } from '../../../application/errors/AuthError';
 
 @injectable()
 export class AuthController extends BaseController {

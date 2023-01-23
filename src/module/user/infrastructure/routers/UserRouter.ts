@@ -10,7 +10,7 @@ import { ApiOperationPost, ApiPath } from 'swagger-express-ts';
 import TYPES from '@ioc/constant/Types';
 import DtoRouteValidationMiddleware from '@shared-infra/http/middleware/DtoRouteValidationMiddleware';
 import { UserDTO } from '@user-module/application/dtos/UserDto';
-import { CreateUserController } from '../controller/CreateUserController';
+import { CreateUserController } from '../controller/users/CreateUserController';
 import { UpdateUserController } from '../controller/UpdateUserController';
 import { GetUserController } from '../controller/GetUserController';
 import CheckAuthToken from '@shared-infra/http/middleware/CheckAuthToken';
