@@ -1,5 +1,5 @@
 import { createLogger, format, transports, Logger } from 'winston';
-const { combine, timestamp, printf } = format;
+const { combine, timestamp, printf, errors } = format;
 import fs = require('fs');
 import DailyRotateFile = require('winston-daily-rotate-file');
 
@@ -36,6 +36,7 @@ export class WinstonLogger {
         })
       ],
       format: combine(
+        errors({ stack: true }),
         this.errorStackFormat(),
         format.json(),
         timestamp({ format: 'YYYY-MM-DD HH:mm:ss.SSSZZ' }),

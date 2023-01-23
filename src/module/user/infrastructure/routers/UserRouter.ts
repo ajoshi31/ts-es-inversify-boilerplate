@@ -1,12 +1,19 @@
 import { NextFunction, Request, Response } from 'express';
 import { inject } from 'inversify';
-import { controller, httpPost, httpPut } from 'inversify-express-utils';
+import {
+  controller,
+  httpGet,
+  httpPost,
+  httpPut
+} from 'inversify-express-utils';
 import { ApiOperationPost, ApiPath } from 'swagger-express-ts';
 import TYPES from '@ioc/constant/Types';
 import DtoRouteValidationMiddleware from '@shared-infra/http/middleware/DtoRouteValidationMiddleware';
 import { UserDTO } from '@user-module/application/dtos/UserDto';
 import { CreateUserController } from '../controller/CreateUserController';
 import { UpdateUserController } from '../controller/UpdateUserController';
+import { GetUserController } from '../controller/GetUserController';
+import CheckAuthToken from '@shared-infra/http/middleware/CheckAuthToken';
 
 @ApiPath({
   name: 'Users',
@@ -19,7 +26,10 @@ export abstract class UserRouters {
     private readonly _createUserController: CreateUserController,
 
     @inject(TYPES.UpdateUserController)
-    private readonly _updateUserController: UpdateUserController
+    private readonly _updateUserController: UpdateUserController,
+
+    @inject(TYPES.GetUserController)
+    private readonly _getUserController: GetUserController
   ) {}
 
   @ApiOperationPost({
@@ -49,5 +59,14 @@ export abstract class UserRouters {
     next: NextFunction
   ) {
     return this._updateUserController.execute(request, response, next);
+  }
+
+  @httpGet('/', CheckAuthToken())
+  public async getUser(
+    request: Request,
+    response: Response,
+    next: NextFunction
+  ) {
+    return this._getUserController.execute(request, response, next);
   }
 }

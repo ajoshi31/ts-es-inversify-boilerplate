@@ -4,6 +4,7 @@ import { injectable } from 'inversify';
 import { interfaces } from 'inversify-express-utils';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 import { logger } from '@core/logger/Logger';
+import { AppError } from '@core/error/AppError';
 
 @injectable()
 export abstract class BaseController {
@@ -22,7 +23,7 @@ export abstract class BaseController {
       await this.executeImpl(req, res, next);
     } catch (err) {
       logger.error(`[BaseController]: Uncaught controller error`, err);
-      this.fail(res, 'An unexpected error occurred', next);
+      this.fail(res, new AppError.UnexpectedError(err), next);
     }
   }
 

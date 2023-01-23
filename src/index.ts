@@ -1,5 +1,7 @@
 import 'module-alias/register';
 import 'reflect-metadata';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('source-map-support').install();
 import * as dotenv from 'dotenv';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import { InversifyConfigContainer } from '@ioc/IocConfig';
