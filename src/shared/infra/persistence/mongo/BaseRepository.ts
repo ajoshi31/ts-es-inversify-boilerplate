@@ -2,7 +2,7 @@
 import { injectable, unmanaged } from 'inversify';
 import { Model, model, Schema, UpdateQuery } from 'mongoose';
 import { AppError } from '@core/error/AppError';
-import { left } from '@core/result/Result';
+import { left, right } from '@core/result/Result';
 import { IBaseRepository } from './IBaseRepository';
 
 @injectable()
@@ -18,10 +18,11 @@ export abstract class BaseRepository<IModelEntity>
   async create(entity: IModelEntity): Promise<any> {
     try {
       const dataToSave = new this.model(entity);
-      await dataToSave.save();
-      return Promise.resolve();
+      const result = await dataToSave.save();
+
+      return right(result);
     } catch (err: unknown) {
-      return left(new AppError.DatabaseError(err));
+      return left(new AppError.DatabaseError(err, 'DB Error:'));
     }
   }
 

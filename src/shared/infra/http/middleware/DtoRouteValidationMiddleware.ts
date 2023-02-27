@@ -12,7 +12,16 @@ const DtoRouteValidationMiddleware = (dtoClass: any) => {
         for (const errorItem of errors) {
           errorTexts = errorTexts.concat(errorItem.constraints);
         }
-        res.status(400).send(errorTexts);
+        const responseObject = {
+          status: 'error',
+          data: null,
+          message: 'There are some validation error with the API request',
+          errors: errorTexts,
+          code: 'VAL001',
+          errorRef: 'jaksjk'
+        };
+
+        res.status(400).send(responseObject);
         return;
       } else {
         next();

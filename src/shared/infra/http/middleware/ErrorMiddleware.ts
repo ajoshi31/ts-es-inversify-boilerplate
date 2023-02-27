@@ -23,13 +23,22 @@ const errorMiddleware = function (app: express.Application) {
         status = errObj.status;
         message = errObj.message;
       }
-      await errorHandler.handleError(myErr);
+      await errorHandler.handleError(message.message, myErr);
       if (!errorHandler.isTrustedError(errObj.err)) {
         process.exit(1);
+        // SERVICE SHULD TERMINATE BUT THIS REQUEST SHOULD COMPLETE
+        // GRACEFULLY RESTART -> PM2, EC2 INSTANCE -> not possible in dev but it will work in server
       }
-      return BaseController.jsonResponse(res, status, message);
+
+      return BaseController.errorResponse(res, status, message.message);
     }
   );
 };
 
 export default errorMiddleware;
+
+// External or external service -> lowest level capture
+// Domain/UseCase -> it willjust have message and no error object
+// Client Violation Error : // Validation -> list of message and does not have any error object
+
+// Sinature or code error : Unhandled or unxepected -> Error Object and this need to be resatarted

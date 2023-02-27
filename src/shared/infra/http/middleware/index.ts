@@ -4,6 +4,7 @@ import basicMiddleware from './global/Basic';
 import statusMonitorMiddleware from './global/status-monitor/StatusMonitor';
 import swaggerMiddleware from './global/Swagger';
 import morganMiddleware from './global/Morgan';
+import ExitProcess from '@core/utils/ExitProcess';
 
 export default class Middleware {
   public app: express.Application;

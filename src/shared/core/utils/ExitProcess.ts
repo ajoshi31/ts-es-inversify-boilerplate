@@ -6,6 +6,13 @@ const ExitProcess = (server: InversifyExpressServer) => {
     coredump: false,
     timeout: 500
   });
+  process.on('beforeExit', (code) => {
+    // Can make asynchronous calls
+    setTimeout(() => {
+      console.log(`Process will exit with code: ${code}`);
+      process.exit(code);
+    }, 200);
+  });
   process.on('uncaughtException', exitHandler(1, 'Unexpected Error'));
   process.on('unhandledRejection', exitHandler(1, 'Unhandled Promise'));
   process.on('SIGTERM', exitHandler(0, 'SIGTERM'));

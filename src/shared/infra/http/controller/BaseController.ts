@@ -6,6 +6,14 @@ import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 import { logger } from '@core/logger/Logger';
 import { AppError } from '@core/error/AppError';
 
+interface ResponseData<T> {
+  status: string;
+  data: T | undefined;
+  message: string;
+  errors: [];
+  code: string;
+  errorRef: null | string;
+}
 @injectable()
 export abstract class BaseController {
   protected abstract executeImpl(
@@ -35,11 +43,36 @@ export abstract class BaseController {
     return res.status(code).json({ message });
   }
 
+  public static errorResponse(
+    res: express.Response,
+    code: number,
+    message: string
+  ) {
+    const responseObject: ResponseData<any> = {
+      status: 'error',
+      data: null,
+      message: message,
+      errors: [],
+      code: code.toString(),
+      errorRef: 'ALSDKL6281791823981293'
+    };
+    return res.status(code).json(responseObject);
+  }
+
   public ok<T>(res: express.Response, dto?: T) {
     logger.info('API success', res.json);
+    const responseObject: ResponseData<T> = {
+      status: 'success',
+      data: dto,
+      message: 'Data fetched successfully',
+      errors: [],
+      code: '200',
+      errorRef: null
+    };
     if (dto) {
       res.type('application/json');
-      return res.status(200).json(dto);
+
+      return res.status(200).json(responseObject);
     } else {
       return res.sendStatus(200);
     }
@@ -163,4 +196,5 @@ export abstract class BaseController {
     });
   }
 }
+
 /* eslint-enable  @typescript-eslint/no-explicit-any */

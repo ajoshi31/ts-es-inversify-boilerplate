@@ -14,8 +14,8 @@ export namespace AppError {
   }
 
   export class DatabaseError extends BaseError {
-    public constructor(err: unknown) {
-      super(err as Error, 'A data base error occoured', true);
+    public constructor(err: unknown, message: string) {
+      super(err as Error, message, true);
     }
   }
 }
