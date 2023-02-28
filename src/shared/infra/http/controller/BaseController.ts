@@ -6,7 +6,7 @@ import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 import { logger } from '@core/logger/Logger';
 import { AppError } from '@core/error/AppError';
 
-interface ResponseData<T> {
+export interface ResponseData<T> {
   status: string;
   data: T | undefined;
   message: string;
@@ -71,7 +71,6 @@ export abstract class BaseController {
     };
     if (dto) {
       res.type('application/json');
-
       return res.status(200).json(responseObject);
     } else {
       return res.sendStatus(200);

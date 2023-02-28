@@ -19,7 +19,6 @@ export abstract class BaseRepository<IModelEntity>
     try {
       const dataToSave = new this.model(entity);
       const result = await dataToSave.save();
-
       return right(result);
     } catch (err: unknown) {
       return left(new AppError.DatabaseError(err, 'DB Error:'));

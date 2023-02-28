@@ -36,9 +36,3 @@ const errorMiddleware = function (app: express.Application) {
 };
 
 export default errorMiddleware;
-
-// External or external service -> lowest level capture
-// Domain/UseCase -> it willjust have message and no error object
-// Client Violation Error : // Validation -> list of message and does not have any error object
-
-// Sinature or code error : Unhandled or unxepected -> Error Object and this need to be resatarted
