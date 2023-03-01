@@ -158,9 +158,7 @@ export abstract class BaseController {
   ) {
     await next({
       status: StatusCodes.CONFLICT,
-      message: error.errorValue().message
-        ? error.errorValue().message
-        : ReasonPhrases.CONFLICT,
+      message: error.errorValue(),
       err: error
     });
   }

@@ -25,7 +25,7 @@ const errorMiddleware = function (app: express.Application) {
       }
       await errorHandler.handleError(message.message, myErr);
       if (!errorHandler.isTrustedError(errObj.err)) {
-        process.exit(1);
+        // process.exit(1);
         // SERVICE SHULD TERMINATE BUT THIS REQUEST SHOULD COMPLETE
         // GRACEFULLY RESTART -> PM2, EC2 INSTANCE -> not possible in dev but it will work in server
       }

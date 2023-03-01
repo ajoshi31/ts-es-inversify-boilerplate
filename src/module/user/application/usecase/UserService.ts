@@ -7,6 +7,8 @@ import { IUser } from '@user-module/domain/entity/IUser';
 import { IUserRepository } from '@user-module/domain/repository/IUserRepository';
 import { UserDTO } from '../dtos/UserDto';
 import { UserErrors } from '../errors/UserError';
+import { TestService } from './TestService';
+import { User } from '@user-module/domain/entity/User';
 
 type UserResponse = Either<
   AppError.UnexpectedError | UserErrors.UserNotCreatedError,
@@ -21,26 +23,8 @@ export class UserService {
   ) {}
 
   public async createUser(userDto: UserDTO): Promise<UserResponse> {
-    // try {
-    //   const userEntity = UserMap.fromDTOToDomain(userDto); // Checking with domain is happening in the mapper directly
-
-    //   /* This part can't work if we have base implementation in repo pattern else this map can be done in the repository */
-    //   const userModelEntity = UserMap.fromDomainToPersistence(userEntity);
-    //   try {
-    //     await this._userRepository.create(userModelEntity);
-    //     // THIS HAS TO BE MAPPED TO EITHER RESPONSEDTO OR DOMAIN/DTO FOR THAT PARTICUALR SERVICE IF THIS IS GOIN TO BE USED IN SOME OTHER SERVICE
-    //   } catch (err) {
-    //     return left(
-    //       new UserErrors.UserNotCreatedError(err as Error, userEntity)
-    //     );
-    //   }
-    //   return right(Result.ok<UserDTO>());
-    // } catch (err) {
-    //   return left(new AppError.UnexpectedError(err));
-    // }
-
     try {
-      const userEntity = UserMap.fromDTOToDomain(userDto); // Checking with domain is happening in the mapper directly
+      const userEntity: User = UserMap.fromDTOToDomain(userDto); // Checking with domain is happening in the mapper directly
       const userModelEntity = UserMap.fromDomainToPersistence(
         UserMap.fromDTOToDomain(userDto)
       );
@@ -53,6 +37,17 @@ export class UserService {
             resultOrError.value.error.message + 'User not created'
           )
         );
+      }
+
+      if (userEntity.getEmail == 'ajoshi.biz@gmail.com') {
+        return left(
+          new UserErrors.UserNotCreatedError(new Error(''), 'MY MESSAGE')
+        );
+      }
+      const testServiceInstance = new TestService();
+      const testResult = await testServiceInstance.testMethod(3);
+      if (testResult.isLeft()) {
+        return testResult;
       }
       return right(Result.ok<UserDTO>(resultOrError.value));
     } catch (err) {

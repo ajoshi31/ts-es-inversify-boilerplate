@@ -5,6 +5,7 @@ import { BaseController } from '@shared-infra/http/controller/BaseController';
 import { AppError } from '@core/error/AppError';
 import { UserService } from '@user-module/application/usecase/UserService';
 import { UserDTO } from '@user-module/application/dtos/UserDto';
+import { UserErrors } from '@user-module/application/errors/UserError';
 
 @injectable()
 export class CreateUserController extends BaseController {
@@ -31,11 +32,16 @@ export class CreateUserController extends BaseController {
       if (result.isLeft()) {
         // eslint-disable-next-line  @typescript-eslint/no-explicit-any
         const error: any = result.value;
+        console.log('error.constructor', error.constructor);
         switch (error.constructor) {
           case AppError.UnexpectedError:
             return this.fail(response, error, next);
+          case AppError.DatabaseError:
+            return this.notFound(response, error, next);
+          case UserErrors.UserNotCreatedError:
+            return this.conflict(response, error, next);
           default:
-            return this.fail(response, error, next);
+            return this.fail(response, error, next); // SERVICE NOT AVAILAB
         }
       } else {
         const userDetails = result.value.getValue();
