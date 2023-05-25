@@ -79,8 +79,10 @@
   "_moduleAliases": {
     "@root": ".",
     "@user-module": "build/module/user",
+    "@auth-module": "build/module/auth",
     "@core": "build/shared/core",
     "@shared-infra": "build/shared/infra",
-    "@ioc": "build/ioc"
+    "@ioc": "build/ioc",
+    "@config": "build/config"
   }
 }

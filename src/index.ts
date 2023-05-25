@@ -2,6 +2,7 @@ import 'module-alias/register';
 import 'reflect-metadata';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('source-map-support').install();
+import config from '@config/config';
 import * as dotenv from 'dotenv';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import { InversifyConfigContainer } from '@ioc/IocConfig';
@@ -12,7 +13,7 @@ import errorMiddleware from '@shared-infra/http/middleware/ErrorMiddleware';
 import ExitProcess from '@core/utils/ExitProcess';
 
 dotenv.config();
-const port = process.env.PORT;
+const port = config.PORT;
 
 const expressApp = (async (): Promise<void> => {
   /* Setting up IoC */

@@ -15,20 +15,40 @@
     "strict": true /* Enable all strict type-checking options. */,
     "noImplicitAny": true /* Enable error reporting for expressions and declarations with an implied 'any' type. */,
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
-    "types": ["node", "@types/jest"],
-    "typeRoots": ["./node_modules/@types"],
+    "types": [
+      "node",
+      "@types/jest"
+    ],
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
     "sourceMap": true,
     "noUnusedLocals": false,
     "emitDecoratorMetadata": true,
     "moduleResolution": "node",
     "baseUrl": "./src",
     "paths": {
-      "@user-module/*": ["module/user/*"],
-      "@core/*": ["shared/core/*"],
-      "@shared-infra/*": ["shared/infra/*"],
-      "@ioc/*": ["ioc/*"]
+      "@user-module/*": [
+        "module/user/*"
+      ],
+      "@core/*": [
+        "shared/core/*"
+      ],
+      "@shared-infra/*": [
+        "shared/infra/*"
+      ],
+      "@config/*": [
+        "config/*"
+      ],
+      "@ioc/*": [
+        "ioc/*"
+      ]
     }
   },
-  "include": ["src/**/*"],
-  "exclude": ["src/**/*.spec.ts"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "src/**/*.spec.ts"
+  ]
 }
