@@ -70,6 +70,7 @@
     "morgan": "^1.10.0",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.21",
+    "supertest": "^6.3.3",
     "swagger-express-ts": "^1.1.0",
     "swagger-express-ts2": "^1.0.3",
     "swagger-ui-dist": "^4.15.5",
