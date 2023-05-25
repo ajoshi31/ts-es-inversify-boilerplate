@@ -4,7 +4,7 @@ import { injectable } from 'inversify';
 import { interfaces } from 'inversify-express-utils';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 import { logger } from '@core/logger/Logger';
-import { AppError } from '@core/error/AppError';
+import { IResponseData } from '@core/utils/IResponseData';
 
 @injectable()
 export abstract class BaseController {
@@ -23,7 +23,7 @@ export abstract class BaseController {
       await this.executeImpl(req, res, next);
     } catch (err) {
       logger.error(`[BaseController]: Uncaught controller error`, err);
-      this.fail(res, new AppError.UnexpectedError(err), next);
+      this.fail(res, 'An unexpected error occurred', next);
     }
   }
 
@@ -35,11 +35,36 @@ export abstract class BaseController {
     return res.status(code).json({ message });
   }
 
+  public static errorResponse(
+    res: express.Response,
+    code: number,
+    message: string,
+    errorRef?: any
+  ) {
+    const responseObject: IResponseData<any> = {
+      status: 'error',
+      data: null,
+      message: message,
+      errors: [],
+      code: code.toString(),
+      errorRef: errorRef
+    };
+    return res.status(code).json(responseObject);
+  }
+
   public ok<T>(res: express.Response, dto?: T) {
     logger.info('API success', res.json);
+    const responseObject: IResponseData<typeof dto> = {
+      status: 'success',
+      data: dto,
+      message: 'Data fetched successfully',
+      errors: [],
+      code: '200',
+      errorRef: null
+    };
     if (dto) {
       res.type('application/json');
-      return res.status(200).json(dto);
+      return res.status(200).json(responseObject);
     } else {
       return res.sendStatus(200);
     }
@@ -147,6 +172,34 @@ export abstract class BaseController {
     });
   }
 
+  public async noContent(
+    res: express.Response,
+    error: Error | string | any,
+    next: express.NextFunction
+  ) {
+    await next({
+      status: StatusCodes.NO_CONTENT,
+      message: error.errorValue().message
+        ? error.errorValue().message
+        : ReasonPhrases.NO_CONTENT,
+      err: error
+    });
+  }
+
+  public async badGateway(
+    res: express.Response,
+    error: Error | string | any,
+    next: express.NextFunction
+  ) {
+    await next({
+      status: StatusCodes.BAD_GATEWAY,
+      message: error.errorValue().message
+        ? error.errorValue().message
+        : ReasonPhrases.BAD_GATEWAY,
+      err: error
+    });
+  }
+
   public todo(res: express.Response) {
     return BaseController.jsonResponse(res, 400, 'TODO');
   }
@@ -158,9 +211,10 @@ export abstract class BaseController {
   ) {
     await next({
       status: StatusCodes.INTERNAL_SERVER_ERROR,
-      message: error.errorValue(),
+      message: error.errorValue().message
+        ? error.errorValue().message
+        : ReasonPhrases.INTERNAL_SERVER_ERROR,
       err: error
     });
   }
 }
-/* eslint-enable  @typescript-eslint/no-explicit-any */
