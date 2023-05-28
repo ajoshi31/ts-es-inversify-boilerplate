@@ -31,6 +31,7 @@
     "@types/jest": "^29.2.4",
     "@types/morgan": "^1.9.3",
     "@types/node": "^18.11.9",
+    "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "@typescript-eslint/parser": "^5.44.0",
     "eslint": "^8.28.0",
@@ -46,6 +47,7 @@
     "typescript": "^4.9.3"
   },
   "dependencies": {
+    "@google-cloud/logging-winston": "^5.3.0",
     "@types/compression": "^1.7.2",
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.14",
@@ -69,6 +71,7 @@
     "morgan": "^1.10.0",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.21",
+    "supertest": "^6.3.3",
     "swagger-express-ts": "^1.1.0",
     "swagger-express-ts2": "^1.0.3",
     "swagger-ui-dist": "^4.15.5",
@@ -79,8 +82,10 @@
   "_moduleAliases": {
     "@root": ".",
     "@user-module": "build/module/user",
+    "@auth-module": "build/module/auth",
     "@core": "build/shared/core",
     "@shared-infra": "build/shared/infra",
-    "@ioc": "build/ioc"
+    "@ioc": "build/ioc",
+    "@config": "build/config"
   }
 }

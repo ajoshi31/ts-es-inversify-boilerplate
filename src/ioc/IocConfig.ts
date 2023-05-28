@@ -36,7 +36,7 @@ const InversifyConfigContainer = async () => {
       .to(GetUserController)
       .inSingletonScope();
   } catch (err: unknown) {
-    errorHandler.handleError(err as Error);
+    errorHandler.handleError('IOC Error', err as Error);
   }
 
   return container;

@@ -14,7 +14,7 @@ const terminate = (
     if (err && err instanceof Error) {
       logger.error(reason);
 
-      errorHandler.handleError(err);
+      errorHandler.handleError('Termination error', err);
       if (!errorHandler.isTrustedError(err)) {
         process.exit(code);
       }
